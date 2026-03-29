@@ -1,0 +1,9 @@
+{
+  "cursor.tabCompletion": "off",
+  "cursor.agentAutocomplete": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  }
+}
