@@ -1,0 +1,480 @@
+Delivered-To: davi@rmconsult.io
+Received: by 2002:a05:7000:59ca:b0:7ed:167a:af60 with SMTP id z10csp548778may;
+        Thu, 12 Mar 2026 07:45:20 -0700 (PDT)
+X-Received: by 2002:a05:690e:4492:b0:649:e6de:8f3f with SMTP id 956f58d0204a3-64d656fd8b5mr5056921d50.32.1773326719573;
+        Thu, 12 Mar 2026 07:45:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773326719; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GuEEP0aFRWU9LiLbOOh3KwQrb6O7zKSWJAnSM2Sd7kSGedlLWlHufQYbHDhiYs2yJs
+         I/alXHxUgudO1SnDvey0gf6xPZCkqzP6rZggtVr1zEPkebIQvZDeFtPb03FGUR9E8d43
+         cbWNy74M5ylN+9VKI+Om2cEewd0KhZ1P0ADIjaCrBQPVvpIr16yAfo/QMah7i83funZl
+         diTX6irhTXyTgexjbFZVkNvJLWYkCnxuEVQak25aL4oC80JQUcTswGSxFGx+av4reSA6
+         DFPfWtQTnQSsqHmF8u5UHjiBkpg+45oGCMLLDSYqWvb3urm2tMgHzN5RJktEfpyNcBbh
+         OVPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-id:list-unsubscribe-post:list-unsubscribe:mime-version:subject
+         :message-id:cc:to:reply-to:from:date:dkim-signature;
+        bh=dQv2k3Nku4rPsoWs0JLgFC212taC1NJWOMvU6sqtFP4=;
+        fh=t970XWhN25s6ymnhFc5EroU+yDuxLVyfOrA6513VT1Q=;
+        b=j7ewNR2AzkabhqnQexYvWz8AERXJRZDpzMu/h7neY9htWyH2uVNMjWwLg8zDuEfTnx
+         Dgsxq2wEegFE6RfGeLMn8ljEESWJFqMCpPOR63BrUnuA8xQ6R/EW6ur2HQO7OnFGPUiW
+         4e7xJ6i/yZa8ImPihXNamkKfVdujlXf/tGAnMz9nuxyglCOKVTPp02sX0XKAz6tOezaT
+         PxneGmHRsJ7O+PGVqeyRJHsue5GRjF0K9kIDQI24ZbWrj5O0OtNbC4Tq/XKTQx+s62er
+         6qNHF4E5k9ANBDp1/UDYL+bxOGZBx/VobKcnIZFauA32HgFHNFo6q1hNG0LWN93nHOoW
+         pKyg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@talent.icims.com header.s=scph1117 header.b=c65yfi84;
+       spf=pass (google.com: domain of msprvs1=20531sznkb5ow=bounces-131558-5398@bounces.icims.com designates 162.247.166.147 as permitted sender) smtp.mailfrom="msprvs1=20531sZNKb5oW=bounces-131558-5398@bounces.icims.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=talent.icims.com
+Return-Path: <msprvs1=20531sZNKb5oW=bounces-131558-5398@bounces.icims.com>
+Received: from icims-talentplatform-166147.email.icims.tools (icims-talentplatform-166147.email.icims.tools. [162.247.166.147])
+        by mx.google.com with ESMTPS id 956f58d0204a3-64d65203270si4768020d50.342.2026.03.12.07.45.19
+        for <davi@rmconsult.io>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2026 07:45:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=20531sznkb5ow=bounces-131558-5398@bounces.icims.com designates 162.247.166.147 as permitted sender) client-ip=162.247.166.147;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@talent.icims.com header.s=scph1117 header.b=c65yfi84;
+       spf=pass (google.com: domain of msprvs1=20531sznkb5ow=bounces-131558-5398@bounces.icims.com designates 162.247.166.147 as permitted sender) smtp.mailfrom="msprvs1=20531sZNKb5oW=bounces-131558-5398@bounces.icims.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=talent.icims.com
+Return-Path: <msprvs1=20531sZNKb5oW=bounces-131558-5398@bounces.icims.com>
+X-MSFBL: rHxj6LmLR7dFbQQalmrkHPGRLQSrp0pkAj7KZPbtEWo=|eyJyIjoiZGF2aUBybWN
+	vbnN1bHQuaW8iLCJtZXNzYWdlX2lkIjoiNjliMjdkZDFiMjY5N2I2ZTA3NGUiLCJ
+	0ZW5hbnRfaWQiOiJzcGMiLCJjdXN0b21lcl9pZCI6IjEzMTU1OCIsInN1YmFjY29
+	1bnRfaWQiOiI1Mzk4In0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=talent.icims.com;
+	s=scph1117; t=1773326717; i=@talent.icims.com;
+	bh=dQv2k3Nku4rPsoWs0JLgFC212taC1NJWOMvU6sqtFP4=;
+	h=Date:From:To:Cc:Message-ID:Subject:Content-Type:X-CSA-Complaints:
+	 List-Unsubscribe:List-Unsubscribe-Post:From:To:Cc:Subject;
+	b=c65yfi84LnfWlM4SpKV6beWL5/6bRU0knAxJ2lW5xlnJ2g/53PiOUgYZ9KJXrE0vJ
+	 8W0Xcg4mUKvXWEE1crhHYoUYMGY4yOiEIKmUtVzcQzSzaJmD4yI7lOFLGDuPiMck0b
+	 euZkGoRtwxnXSS9VPxTKJPvrTS0Xu3+cMh4YajZU=
+Received: from [10.90.39.219] ([10.90.39.219])
+	by i-0476808c27e71976c.mta1vrest.sd.prd.sparkpost (ecelerity 5.2.0.75207 r(msys-ecelerity:tags/5.2.0.3)) with REST
+	id E4/78-05635-D71D2B96; Thu, 12 Mar 2026 14:45:17 +0000
+Date: Thu, 12 Mar 2026 10:45:17 -0400 (EDT)
+From: Samira Costa <uber+email+3qhlg-5d92893eb6@talent.icims.com>
+Reply-To: Samira Costa <uber+email+3qhlg-5d92893eb6@talent.icims.com>
+To: davi@rmconsult.io
+Cc: sgomes20@ext.uber.com
+Message-ID: <787448427.103910.1773326717526@ip-10-47-161-56.ec2.internal>
+Subject: Davi - Zoom Interview Confirmation with Uber for Software Engineer
+ II - Frontend **Please Confirm**
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_103908_1675556433.1773326717521"
+X-iRecruiter-Type: IE
+X-iCIMS-Type: IE
+X-iCIMS-Priority: Normal
+X-iRecruiter-Source: uber
+X-iCIMS-Message-Id: 17552628.TQPYPNPz6Oi0Og+GQXomKWpIe4pbjoZ7pgfVTzbXC54=
+X-CSA-Complaints: csa-complaints@eco.de
+X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true, "transactional": false, "ip_pool": "prd_us_direct" } }
+List-Unsubscribe: <mailto:unsubscribe@unsub.spmta.com?subject=unsubscribe:rpxYPsLMoJc4QE4BzHvHrdke28BvwPe53kcfDnqU-Y0~|eyAicmNwdF90byI6ICJkYXZpQHJtY29uc3VsdC5pbyIsICJ0ZW5hbnRfaWQiOiAic3BjIiwgImN1c3RvbWVyX2lkIjogIjEzMTU1OCIsICJzdWJhY2NvdW50X2lkIjogIjUzOTgiLCAibWVzc2FnZV9pZCI6ICI2OWIyN2RkMWIyNjk3YjZlMDc0ZSIgfQ~~>,<https://unsubscribe.spmta.com/u/io3KMDDDzOkAIirsTz0gig~~/AAIB5hA~/947YCHSbU_576mW_PcEGQlHEc0w2XuH0EIkJPeEZs6ZjyOTTyRnh13inNIV5zEzyq0oUTShYZZsJMDDTSoolMw~~>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: <spc.131558.5398.sparkpostmail.com>
+
+------=_Part_103908_1675556433.1773326717521
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+=C2=A0=0D=0A=C2=A0=0D=0A=C2=A0=0D=0A=C2=A0=0D=0A =0D=0A =0D=0A =0D=0A =0D=
+=0A=C2=A0 =0D=0AHi Davi,=0D=0A=0D=0A=0D=0AI hope you're having a great day!=
+ I'm reaching out to confirm that I=E2=80=99ve scheduled your interview(s) =
+for the Software Engineer II - Frontend role. Please review the details bel=
+ow and let us know if you are unable to commit to the scheduled time(s):=0D=
+=0A=C2=A0=0D=0AWednesday, April 1Time: 2:00 =E2=80=93 3:00pm BRTInterviewer=
+: Jorge JuniorExercise link: https://tracking.icims.com/f/a/xMZFclFIP2SSM5d=
+uV0povw~~/AAIB5hA~/PC_jk2IYSBrfCf0w8NLhbxXLOtxLLiAMAkoH4dq3y9JiTVfcruwYQ81D=
+0LpGY93aK7qEIyGLTrDPxMc4P1hUnIULdKbHpyQmjc4kIYK_9FU~=0D=0A=C2=A0=0D=0AWe us=
+e Zoom as our internal video conferencing tool. Please download Zoom before=
+ the call and use the link below to access your interview(s) and ensure tha=
+t everything is working smoothly before the start of the interview(s). Plea=
+se note that if there are multiple interviews scheduled, the same Zoom link=
+ should be used for all of them. We do not send separate calendar invites f=
+or the interviews, and we require all Zoom calls to be conducted with the c=
+ameras turned on for the duration of the interview(s).=0D=0A=C2=A0=0D=0AZoo=
+m Link: https://tracking.icims.com/f/a/vrl84hIrrNG40b4hb-GW9g~~/AAIB5hA~/g_=
+Nlu3gU86Kx0jQvNH4GH2OkH0dJA7RrGMsMpziac_xMWoIdhE6jSyp2nuccTQUQVYzA7fdhTJwyo=
+3264jNjSiiDdTebVDINaftQ-YxCNmj9Fa6HYWCrGDTkKIa82ecJXeXY2CHjUntb64Rm70JK-yle=
+KVnnAMMeoUvtM5L9dEw~=0D=0AMeeting ID: 99701077264 =0D=0APassword: 917928 =
+=0D=0A=C2=A0=0D=0APlease use individual HackerRank links during each interv=
+iew that requires coding and/or whiteboarding, and make sure you have a wor=
+king internet connection. We encourage you to experiment with HackerRank's =
+functionality and/or review this guide on how to use the tool before your f=
+irst interview, and inform us of any technical difficulties you may encount=
+er.=0D=0A=C2=A0=0D=0AHere are a few things to note:=0D=0A- Join the intervi=
+ew(s) first through Zoom, the interviewer will then prompt you to open the =
+HackerRank link.=0D=0A- You can find the HackerRank Virtual Whiteboard tab =
+on the top of the IDE. If you prefer another online whiteboarding tool, fee=
+l free to inform your interviewer and have the application ready to use.=0D=
+=0A- Use of outside programming/AI tools such as Chat GPT is not permitted =
+throughout our interview process.=0D=0A- Having a pen & paper ready as a ba=
+ck-up plan is highly recommended.=0D=0A- Recording of this interview is not=
+ permitted.=0D=0APlease respond to this email within 24-hours to confirm yo=
+ur attendance by clicking on =E2=80=9CReply All=E2=80=9D. Our team is looki=
+ng forward to meeting you. Just so you know, 95% of our candidates complete=
+ the process without rescheduling, which helps us maintain momentum and mak=
+e hiring decisions faster. - We=E2=80=99re on our way. Are you=3F See you t=
+here!=0D=0A=C2=A0=0D=0AGet interview-ready with our Candidate Prep Pack=E2=
+=80=94filled with tips, resources, and insights into our hiring process.=0D=
+=0A=C2=A0=0D=0AIf you'd like to brush up on the latest news and events goin=
+g on at Uber, visit Uber's Newsroom.=0D=0A =0D=0AThanks,=0D=0ASamira=C2=A0=
+=0D=0ATalent Coordinator=0D=0A =0D=0AUber is committed to an inclusive work=
+ environment and we want to make this a great interview experience for you.=
+ If you have a disability or special need that requires accommodation, plea=
+se let us know by completing this form.=0D=0A=0D=0A=C2=A0=0D=0AUber takes y=
+our privacy seriously. Please note by agreeing to engage with Uber Talent A=
+cquisition, you are consenting on the collection and use of your candidate =
+information. To learn how we collect and use your information, and learn ab=
+out your rights under GDPR, please visit our Privacy Statement.=0D=0A =0D=
+=0A =0D=0A =0D=0A=C2=A0=0D=0A =0D=0A =0D=0A=C2=A0 =0D=0A =0D=0A =0D=0A =0D=
+=0A =0D=0A =0D=0A =0D=0A=C2=A0 =0D=0AGet help  Privacy  Terms  =0D=0A =0D=
+=0ACommunity =0D=0A =0D=0A =0D=0A =0D=0A=C2=A0 =0D=0A =0D=0A   =0D=0A =0D=
+=0A =0D=0A =0D=0AUber Technologies =0D=0A1515 3rd St., San Francisco, CA 94=
+158=0D=0AUber.com =0D=0A =0D=0A =0D=0A =0D=0A =0D=0A =0D=0A =0D=0A =0D=0A=
+=C2=A0=0D=0A=C2=A0=0D=0A
+------=_Part_103908_1675556433.1773326717521
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><p =
+style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><div d=
+ir=3D"ltr" style=3D"background-color: #d6d6d5; margin: 0; min-width: 100%; =
+padding: 0; width: 100%;"><table style=3D"background-color: #d6d6d5; border=
+: 0; border-collapse: collapse; border-spacing: 0;" border=3D"0" width=3D"1=
+00%" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#d6d6d5"><tbody><tr><td=
+ style=3D"display: block;" align=3D"center"><table style=3D"border: 0; bord=
+er-collapse: collapse; border-spacing: 0; max-width: 700px;" border=3D"0" w=
+idth=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"b=
+ackground-color: #ffffff;"><table style=3D"border: none; border-collapse: c=
+ollapse; border-spacing: 0; width: 100%;" border=3D"0" width=3D"100%" cells=
+pacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"background-color: #0=
+00000; padding: 0px 14px 0px 14px; direction: ltr; text-align: left;" align=
+=3D"left"><table style=3D"border: none; border-collapse: collapse; border-s=
+pacing: 0; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><=
+tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"m=
+argin: 0 auto; border: none; border-collapse: collapse; border-spacing: 0; =
+max-width: 560px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"center"><tbody><tr><td style=3D"padding-left: 12px; padding=
+-right: 12px; direction: ltr; text-align: left;"><table style=3D"border: no=
+ne; border-collapse: collapse; border-spacing: 0; table-layout: fixed; widt=
+h: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" a=
+lign=3D"left"><tbody><tr><td style=3D"direction: ltr; text-align: left;"><i=
+mg style=3D"clear: both; display: block; max-width: 100%; outline: none; te=
+xt-decoration: none;" src=3D"https://s3.amazonaws.com/uber-static/emails/20=
+18/global/logos/uber-logo_75x75_2x_white.png" width=3D"75" height=3D"75" />=
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr><tr><td style=3D"padding: 0px 14px 0px 14px; direction: ltr; t=
+ext-align: left;" align=3D"left"><table style=3D"border: none; border-colla=
+pse: collapse; border-spacing: 0; width: 100%;" border=3D"0" cellspacing=3D=
+"0" cellpadding=3D"0"><tbody><tr><td style=3D"padding-top: 25px; padding-bo=
+ttom: 25px; direction: ltr; text-align: left;"><table style=3D"margin: 0 au=
+to; border: none; border-collapse: collapse; border-spacing: 0; max-width: =
+560px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=
+=3D"center"><tbody><tr><td style=3D"padding-left: 12px; padding-right: 12px=
+; direction: ltr; text-align: left;"><table style=3D"border: none; border-c=
+ollapse: collapse; border-spacing: 0; table-layout: fixed; width: 100%;" bo=
+rder=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" align=3D"left=
+"><tbody><tr><td style=3D"padding-top: 5px; padding-bottom: 4px; direction:=
+ ltr; text-align: left;">&nbsp;</td></tr><tr><td style=3D"color: #000000; f=
+ont-family: Helvetica; font-size: 16px; line-height: 26px; padding-bottom: =
+7px; padding-top: 7px; direction: ltr; text-align: left;"><p style=3D"margi=
+n: 0px;">Hi Davi,<br /><br /></p><p style=3D"margin: 0px;">I hope you're ha=
+ving a great day! I'm reaching out to confirm that I=E2=80=99ve scheduled y=
+our interview(s) for the Software Engineer II - Frontend role. Please revie=
+w the details below and let us know if you are unable to commit to the sche=
+duled time(s):</p><p style=3D"margin: 0px;">&nbsp;</p><div id=3D"xDetDlgWhe=
+n" class=3D"toUqff "><div class=3D"JEx5le bgOWSb"><div class=3D"AzuXid O2Vj=
+S CyPPBf"><strong>Wednesday, April 1</strong></div><div class=3D"AzuXid O2V=
+jS CyPPBf"><strong>Time: 2:00 =E2=80=93 3:00pm BRT</strong></div><div class=
+=3D"AzuXid O2VjS CyPPBf"><strong>Interviewer: Jorge Junior</strong></div><d=
+iv class=3D"AzuXid O2VjS CyPPBf"><strong>Exercise link: <a href=3D"https://=
+tracking.icims.com/f/a/dogHygp_0jhQsJRnDytkKQ~~/AAIB5hA~/_iFRIXz01aO0z7T5om=
+iy_4uwMBLy7vAQVh-pG6PkwUdRu8jpAiHtbAJ9YmK4n1ihNK4tE173wOhrSYX_p3pqXsFLRPwT5=
+iSCkfBcZqcreQejJZkQzlI1tVGEO6rg7HrG2wupkFrFN2WvXTt58L1VV3yrstdF0u8IcCCoYQQA=
+vtnvaDNVAnXGyQvIQnf-G3BzK8QE8Ewyv-3lwX-06Nfwt-ZyuLPSRj5u3Qe8hAM8-AJmva51gu1=
+_BeGaVRDbwAE9" target=3D"_blank" rel=3D"noopener">https://hr.gs/7b68604</a>=
+ </strong></div></div></div><p style=3D"margin: 0px;">&nbsp;</p><p style=3D=
+"margin: 0px;">We use Zoom as our internal video conferencing tool. Please =
+<a href=3D"https://tracking.icims.com/f/a/EEKRad8Av128HYAib9WspA~~/AAIB5hA~=
+/tMXkVOFgLlRiY9zuroUUpH0s0v3BMr0UOpB2BykAUqvWuU0R_ynlnlwPrP6z3uX5QCR7-TjRze=
+rTXcgNsCdOKd1prpYZI2oLSQrowLGmHZk~" target=3D"_blank" rel=3D"noopener">down=
+load Zoom</a> before the call and use the link below to access your intervi=
+ew(s) and ensure that everything is working smoothly before the start of th=
+e interview(s). Please note that if there are multiple interviews scheduled=
+, the <strong>same Zoom link</strong> should be used for all of them. We do=
+ not send separate calendar invites for the interviews, and we require all =
+Zoom calls to be conducted with the cameras turned on for the duration of t=
+he interview(s).</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin:=
+ 0px;"><strong>Zoom Link</strong>: <a href=3D"https://tracking.icims.com/f/=
+a/SiYQVT-w9_7--QieRK6i8A~~/AAIB5hA~/KFcuJ8UTczg_7zWgxCnOTYIrbMgVf0fWRrmVB79=
+URVNjMhZ1iqNrHr1TxiQUgaJsgtBmkQ1wbDGyfuE7EIYRYH7OeTc6nlPuMpCd9Qaq9-ATQmAaee=
+2VEzYpguVtm22S05GKZ0dBmipFirzYpYXXbJ_iOpFGZXBv82EK0hjBmPfgpu1YlrR-kxArRi5vD=
+HuTaO-JX2kAQwzh_fG3drxr8labMVf4R2guvT9KSPbEP-SSnmPmSMKKdXFskTLamwRfuucaHeXD=
+bARRNEvC45YhzLaVRAqaVUmPv0SM2r0767yIPxP8EZK6b9gRelizsrdE" target=3D"_blank"=
+ rel=3D"noopener">https://uber.zoom.us/j/99701077264pwd=3DErYlRwDdXFj8VdNMF=
+9n4Z8YoIYnDGm.1</a></p><p style=3D"margin: 0px;"><span>Meeting ID: 99701077=
+264 </span></p><p style=3D"margin: 0px;"><span>Password: 917928 </span></p>=
+<p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">Please use in=
+dividual <strong>HackerRank</strong> links during each interview that requi=
+res coding and/or whiteboarding, and make sure you have a working internet =
+connection. We encourage you to experiment with HackerRank's functionality =
+and/or review <a href=3D"https://tracking.icims.com/f/a/wx71A9aS6ficPp380JY=
+zKw~~/AAIB5hA~/wI3mp92t3DPNNEIuHpK-YXsXTOa_Fzz3fFGD8E7YAgGZX4RrYZYtTLreKu5d=
+lWy7zDW_4dkr8QGizlgIzKl9SzaRed7C_l4TKg8JRiuu4wRZtj2tA1vlU5NYEgjVOv-WjrIa5bF=
+4LUZBNy3gcZlPu_JenswP2c-bk62WkrPwmzCqOftDICue1C9DngJxoZTGb4u1UDIxtDsIjeJclq=
+9eoQ~~" target=3D"_blank" rel=3D"noopener">this guide</a> on how to use the=
+ tool before your first interview, and inform us of any technical difficult=
+ies you may encounter.</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"m=
+argin: 0px;">Here are a few things to note:</p><ul><li>Join the interview(s=
+) first through Zoom, the interviewer will then prompt you to open the Hack=
+erRank link.</li><li>You can find the HackerRank Virtual Whiteboard tab on =
+the top of the IDE. If you prefer another online whiteboarding tool, feel f=
+ree to inform your interviewer and have the application ready to use.</li><=
+li><strong>Use of outside programming/AI tools such as Chat GPT is not perm=
+itted throughout our interview process.</strong></li><li>Having a pen &amp;=
+ paper ready as a back-up plan is highly recommended.</li><li>Recording of =
+this interview is not permitted.</li></ul><p style=3D"margin: 0px;"><strong=
+>Please respond to this email within 24-hours to confirm your attendance by=
+ clicking on =E2=80=9CReply All=E2=80=9D</strong>. Our team is looking forw=
+ard to meeting you. Just so you know, <strong>95% of our candidates complet=
+e the process without rescheduling</strong>, which helps us maintain moment=
+um and make hiring decisions faster. - We=E2=80=99re on our way. Are you=3F=
+ See you there!</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: =
+0px;"><span data-sheets-root=3D"1">Get interview-ready with our <a href=3D"=
+https://tracking.icims.com/f/a/Pyur5fy3CuUCJDJjmgyZKA~~/AAIB5hA~/u737AGyOv8=
+uO3Ejxa5YpZvstAZI42Ti8KKKsE-sUwGcMfyGRqft2GBs4ejGEK7Zd8KNbyV5hR8Toj_D1w5Yl7=
+FK0Gz0K3zfMwiHCexdC1MWJGQ6b0sHUwi6HHCOo8XXf40e4BFeTM4m-UIVazAINzA~~" target=
+=3D"_blank" rel=3D"noopener">Candidate Prep Pack</a>=E2=80=94filled with ti=
+ps, resources, and insights into our hiring process.</span></p><p style=3D"=
+margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;"><span data-sheets-root=3D=
+"1">If you'd like to brush up on the latest news and events going on at Ube=
+r, visit Uber's <a href=3D"https://tracking.icims.com/f/a/um7BmbBDRiKTHlRIm=
+eanzw~~/AAIB5hA~/ymdYbXG0Y6C2XIdAxb5OOK_HImKIISL2h_iTqkXwmKNFnxtuMcMSmar4Tk=
+NvhEFkuel0-hS83WB5zaS7tlxuroWbsgPL_xkH2bJKVJw1nqiEHK2Z5CQx89B2mHdWSR92" tar=
+get=3D"_blank" rel=3D"noopener">Newsroom</a>.</span></p></td></tr><tr><td s=
+tyle=3D"color: #000000; font-family: Helvetica; font-size: 16px; line-heigh=
+t: 26px; padding-bottom: 7px; padding-top: 7px; direction: ltr; text-align:=
+ left;"><p style=3D"margin: 0px;">Thanks,<br />Samira&nbsp;</p><p style=3D"=
+margin: 0px;">Talent Coordinator</p></td></tr><tr><td style=3D"direction: l=
+tr; text-align: left; padding-top: 7px; padding-bottom: 7px;"><table style=
+=3D"border: none; border-collapse: collapse; border-spacing: 0; table-layou=
+t: fixed; width: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"left"><tbody><tr><td lang=3D"x-textcta" style=3D"colo=
+r: #000000; direction: ltr; font-family: Helvetica; font-size: 16px; line-h=
+eight: 22px; padding-bottom: 10px; text-align: left;"><p style=3D"margin: 0=
+px;"><span style=3D"font-size: 8pt;"><em>Uber is committed to an inclusive =
+work environment and we want to make this a great interview experience for =
+you. If you have a disability or special need that requires accommodation, =
+please let us know by completing <a href=3D"https://tracking.icims.com/f/a/=
+LrlDBgzcYVqO0lEtzXpALg~~/AAIB5hA~/W9r2yM8zdNZRWhRxt0rCVZ1q34VBrhQnTSG6Nylje=
+OiAGN0wS5S8aaVXFkg6bSwD4D91bszE3CQ5YiK_Kk1QgCi2p44hFDG9DyFbTEZDepdV24I_k6W9=
+5rpyAyBAa0kg" target=3D"_blank" rel=3D"noopener">this form</a>.<br /></em><=
+/span></p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;"><sp=
+an style=3D"font-size: 8pt;"><em>Uber takes your privacy seriously. Please =
+note by agreeing to engage with Uber Talent Acquisition, you are consenting=
+ on the collection and use of your candidate information. To learn how we c=
+ollect and use your information, and learn about your rights under GDPR, pl=
+ease visit our <span style=3D"color: #0000ff;"><a href=3D"https://tracking.=
+icims.com/f/a/A1xzT8gk2Qwglm8JQ7KdnA~~/AAIB5hA~/_ufIGXO-LG8A5-U5cjp2uWFq4eN=
+7hLNvDxR8Cy-NVPszkzk7IZLZrv94K_sTrI9bXaj_YSwCbYt-OzIqfg0LBQ5kdnu3KmQ8IMVLZ1=
+ad3QBg4k_qx80ztIx4L6c-pvzeV70LqPnYI-_VPQcf8lU7VfP5ovvkS4Yggn2HlDgRoaY~" tar=
+get=3D"_blank" style=3D"color: #0000ff;" rel=3D"noopener">Privacy Statement=
+</a></span>.</em></span></p></td></tr></tbody></table></td></tr></tbody></t=
+able></td></tr></tbody></table><p style=3D"margin: 0px;">&nbsp;</p></td></t=
+r></tbody></table></td></tr></tbody></table><table style=3D"border: 0; bord=
+er-collapse: collapse; border-spacing: 0; margin: auto; max-width: 700px;" =
+border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr>=
+<td align=3D"center"><table style=3D"background-color: #fff; border: 0; bor=
+der-collapse: collapse; border-spacing: 0; margin: auto;" border=3D"0" widt=
+h=3D"100%" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff"><tbody><=
+tr><td align=3D"center"><table style=3D"border: 0; border-collapse: collaps=
+e; border-spacing: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpa=
+dding=3D"0"><tbody><tr><td style=3D"background-color: #ffffff;" align=3D"ce=
+nter"><table style=3D"border: 0; border-collapse: collapse; border-spacing:=
+ 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody=
+><tr><td><table style=3D"border: 0; border-collapse: collapse; border-spaci=
+ng: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tb=
+ody><tr><td><table style=3D"border: 0; border-collapse: collapse; border-sp=
+acing: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0">=
+<tbody><tr><td><table style=3D"border: none; border-collapse: collapse; bor=
+der-spacing: 0; width: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0"=
+ cellpadding=3D"0" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"padding: 0px=
+ 14px 0px 14px; direction: ltr; text-align: left;" align=3D"left">&nbsp;</t=
+d></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>=
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr></tbody></table><table style=3D"background-color: #000000; bor=
+der: none; border-collapse: collapse; border-spacing: 0; width: 100%;" bord=
+er=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td =
+style=3D"padding: 0px 14px 0px 14px; direction: ltr; text-align: left;" ali=
+gn=3D"left"><table style=3D"border: none; border-collapse: collapse; border=
+-spacing: 0; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+><tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D=
+"border: none; border-collapse: collapse; border-spacing: 0; max-width: 560=
+px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D=
+"center"><tbody><tr><td style=3D"font-size: 1px; height: 1px; line-height: =
+1px; padding-left: 0px!important; padding-right: 0px!important; direction: =
+ltr; text-align: left;">&nbsp;</td></tr><tr><td style=3D"font-size: 1px; he=
+ight: 1px; line-height: 1px; padding-left: 0px!important; padding-right: 0p=
+x!important; padding-top: 30px; direction: ltr; text-align: left;"><table s=
+tyle=3D"border: none; border-collapse: collapse; border-spacing: 0; width: =
+100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbo=
+dy><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"bord=
+er: none; border-collapse: collapse; border-spacing: 0; max-width: 268px; w=
+idth: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left=
+"><tbody><tr><td style=3D"padding-bottom: 20px; direction: ltr; text-align:=
+ left;"><table style=3D"border: none; border-collapse: collapse; border-spa=
+cing: 0; table-layout: fixed; width: 100%;" border=3D"0" width=3D"100%" cel=
+lspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"color: #ffffff; di=
+splay: inline-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Lig=
+ht','Helvetica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; lin=
+e-height: 16px; padding-left: 12px; padding-right: 12px; text-align: center=
+; width: 64px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/2=
+N8pTtgl-QlPocLW11H0WA~~/AAIB5hA~/B1Ygewp9vOP22lNqx8RizlCcksf1nj82C7NCNI_glp=
+udCStDiwDa6x_zF7w3wJ2AlzaQOZZugDfLUvdBnMJq0zijH4Cp3OrCxbr7ks_HZ_IKqCJmbVFmJ=
+_jrbrxPI4dFxMut_dnycJg7qbHdF-CAw-kRE_LfxnlNPHdkbvH1X1ngUePio7-yuO9wjzZv4GoG=
+g71XV-NJfvXa3XTLtbsFnJ41gQU8GeId6OO2bSN8FU6k4fkHzE8r0HNEvJtVo0Z0ONUaF7WLFSp=
+tFPp6QDxje_GtMP3M6vXngxXvAu6eKlc~" target=3D"_blank" style=3D"color: #fffff=
+f; text-decoration: none;" rel=3D"noopener">Get help</a></td><td style=3D"w=
+idth: 1px; display: inline-block;" align=3D"center" width=3D"1"><img style=
+=3D"clear: both; display: block; height: auto; max-height: 16px; max-width:=
+ 1px; outline: none; text-decoration: none; width: 100%;" src=3D"https://s3=
+.amazonaws.com/uber-static/emails/2018/global/borders/Line.png" width=3D"1=
+" height=3D"" border=3D"0" /></td><td style=3D"color: #ffffff; display: inl=
+ine-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Light','Helve=
+tica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; line-height: =
+16px; padding-left: 12px; padding-right: 12px; text-align: center; width: 6=
+4px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/-_1_otSnsJl=
+tgHfMPklIlQ~~/AAIB5hA~/4zRxoYiXCVBpGV99U9ncTgYSQUisyaW-iKLYuXkZ9mzGRCLTyFpb=
+ulGel4T8DAFnpX9CKL52ApbXcjY2Dgk1KNexzWrhsr8Zci42PlmcGS8_p5Av05ir3K-qxB3paWd=
+s5Tp5HBND66FxfdeP5skqwQ7xmuDg_XKpK9gDkSEABw9IS_5xAw6ZUbCThiQm3QSBUIhOyUoeF2=
+cWMliRMNwHy8ZjW68bqm4yh0PXbwBCLTYVvidpDxdvkCKUwbMoJJ3RuoU137sIKgO6d4arYrzgz=
+4JPGCb2i8fj9VrBUgJE7WA76fYdxejcH5-cSwRPHJN_" target=3D"_blank" style=3D"col=
+or: #ffffff; text-decoration: none;" rel=3D"noopener">Privacy</a></td><td s=
+tyle=3D"width: 1px; display: inline-block;" align=3D"center" width=3D"1"><i=
+mg style=3D"clear: both; display: block; height: auto; max-height: 16px; ma=
+x-width: 1px; outline: none; text-decoration: none; width: 100%;" src=3D"ht=
+tps://s3.amazonaws.com/uber-static/emails/2018/global/borders/Line.png" wid=
+th=3D"1" height=3D"" border=3D"0" /></td><td style=3D"color: #ffffff; displ=
+ay: inline-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Light'=
+,'Helvetica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; line-h=
+eight: 16px; padding-left: 12px; padding-right: 12px; text-align: center; w=
+idth: 63px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/y78v=
+pWyTOlml2qIRe-ns8A~~/AAIB5hA~/i0j8WEo0DSKpCwQBPM-Zy7I-nfsuE3rRmeY1w19Uozt86=
+IdFaVyDW9reR4lpGQT_WKTCvrWtavZOgp5QeGLjXej98rNbbtw9Sbf1v6HUEJummLPaIODnAEB1=
+pVEcm5ozG0zWnOSLfSBRVCxw3EBZmcQ72Qsnz13jlAcUiBzdIo-eAzR8HoKHqIDD3xuUH1Tmrof=
+DcCaQWsoBMABdm9Fxnijcoh0Y9XsJ8KnvlKZqBZWl8_IpxkMgS_nwuovqDhhkYkWfZxiG0D7c46=
+CDtfFyJlCtH64cs5P5DRHT0MaHDnY~" target=3D"_blank" style=3D"color: #ffffff; =
+text-decoration: none;" rel=3D"noopener">Terms</a></td><td style=3D"width: =
+1px; display: inline-block;" align=3D"center" width=3D"1"><img style=3D"cle=
+ar: both; display: block; height: auto; max-height: 16px; max-width: 1px; o=
+utline: none; text-decoration: none; width: 100%;" src=3D"https://s3.amazon=
+aws.com/uber-static/emails/2018/global/borders/Line.png" width=3D"1" height=
+=3D"" border=3D"0" /></td></tr></tbody></table></td></tr></tbody></table><t=
+able style=3D"border: none; border-collapse: collapse; border-spacing: 0; m=
+ax-width: 268px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left"><tbody><tr><td style=3D"padding-bottom: 20px; directi=
+on: ltr; text-align: left;"><table style=3D"border: none; border-collapse: =
+collapse; border-spacing: 0; table-layout: fixed; width: 100%;" border=3D"0=
+" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=
+=3D"color: #ffffff; display: inline-block; font-family: 'UberMoveText-Regul=
+ar','HelveticaNeue-Light','Helvetica Neue Light',Helvetica,Arial,sans-serif=
+; font-size: 10px; line-height: 16px; padding-left: 12px; padding-right: 12=
+px; text-align: center; width: 64px; direction: ltr;"><a href=3D"https://tr=
+acking.icims.com/f/a/4jR6UTAjt7Gm7TP6m3dF7w~~/AAIB5hA~/Ivhyz3GSkESgN_F8AQXo=
+X7LbFi7aUUNtiR3KClLzi5P5JozGTfeaakw8ul3dArCGDWzQHo3LbRDn8UatxghQLBl7mI5FaVy=
+RD-Pq_UxyPYXCiETSt3zmXMWBnIYNNZhkqD1EWD8zI_35ZrB4mNdV-akPbfUcjWjfYhK4aG0Bor=
+_RgsvhltGX_13at3D5w18iXxmLG63ODTft8Gud1FrukA1OWOxMIgYnYAp5Rj9srDh8UPUsRDOr3=
+9NmGd767qyNZNt45az1IH5liRC7SeHrv3-Dxe1LozxtpX4RYgmrFDX3fgJXTK8iMAL4BwJupLSA=
+jxm0RF7uJex4-4SMKKJjyQ~~" target=3D"_blank" style=3D"color: #ffffff; text-d=
+ecoration: none;" rel=3D"noopener">Community</a></td></tr></tbody></table><=
+/td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style=
+=3D"font-size: 1px; height: 1px; line-height: 1px; padding-left: 0px!import=
+ant; padding-right: 0px!important; direction: ltr; text-align: left;"><tabl=
+e style=3D"border: none; border-collapse: collapse; border-spacing: 0; widt=
+h: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><=
+tbody><tr><td dir=3D"rtl" style=3D"font-size: 0; text-align: left; directio=
+n: rtl;"><table dir=3D"ltr" style=3D"border: none; border-collapse: collaps=
+e; border-spacing: 0; display: inline-block; max-width: 224px; vertical-ali=
+gn: middle; width: 100%;"><tbody><tr><td style=3D"padding-left: 12px; paddi=
+ng-right: 12px; padding-top: 20px; width: 100%; direction: ltr; text-align:=
+ left;" align=3D"right"><table style=3D"border: none; border-collapse: coll=
+apse; border-spacing: 0; table-layout: fixed; text-align: right; width: 100=
+%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"right"><tbody=
+><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"border=
+: none; border-collapse: collapse; border-spacing: 0; max-width: 56px; widt=
+h: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left"><=
+tbody><tr><td style=3D"font-size: 1px; height: 1px; line-height: 1px; paddi=
+ng-left: 0px!important; padding-right: 0px!important; direction: ltr; text-=
+align: left;"><table style=3D"border: none; border-collapse: collapse; bord=
+er-spacing: 0; table-layout: fixed; width: 100%;" border=3D"0" width=3D"100=
+%" cellspacing=3D"0" cellpadding=3D"0" align=3D"left"><tbody><tr><td style=
+=3D"font-size: 1px; line-height: 1px; direction: ltr; text-align: left;">&n=
+bsp;</td></tr></tbody></table></td></tr></tbody></table><table style=3D"bor=
+der: none; border-collapse: collapse; border-spacing: 0; max-width: 112px; =
+width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"lef=
+t"><tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=
+=3D"border: none; border-collapse: collapse; border-spacing: 0; table-layou=
+t: fixed; width: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"left"><tbody><tr><td style=3D"direction: ltr; text-al=
+ign: left;" align=3D"right"><a href=3D"https://tracking.icims.com/f/a/zXCsC=
+LcDjulWa2VQDfeKJg~~/AAIB5hA~/bo1suPBBs9a3vDtM00vgwTHE7SWUTaSuYieYlFTZ3vE5cj=
+7aQQlJlX4FcSnKr9CIAVUm8X5YoTeAjRo8Sm5b31Pxgw9UETTR8E-2QIcPX_cl44GZhf4Qqe-N6=
+4SpwusXlv3Koj-203Osqt_zkBo84M3s7WQSQJTnDM5RittlTgQBCM5m34OYouCx_Jwd-9OJnRS_=
+uWwko-EGxihbBi_kLlGiyMQ740v15HdnRVHKo1cjAXmWu6WNRChVch1jjdImCpdln1ZrzNtc9Kj=
+ZzfckbLiP2DmoiQVtfputKkuDs3g~" target=3D"_blank" rel=3D"noopener"> <img sty=
+le=3D"clear: both; display: block; height: auto; max-height: 17px; max-widt=
+h: 13px; outline: none; text-decoration: none; width: 100%;" src=3D"https:/=
+/s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_18facebook.png=
+" width=3D"13" height=3D"" border=3D"0" /> </a></td><td style=3D"direction:=
+ ltr; text-align: left;" align=3D"right"><a href=3D"https://tracking.icims.=
+com/f/a/4Cqm01wnILGUrvTEex9qFQ~~/AAIB5hA~/B1Ygewp9vOP22lNqx8RizlCcksf1nj82C=
+7NCNI_glpusjgPEClAYjidqaAcSxphXNJqXvQ4rPE-d8ZZy0WGKUKiSQ2jZeGjf-U6DY5v4Y1nH=
+B3OrqaIxwYB9U5xpiM9SWB0Z4fd3y6xeMrBqg7zrtRDH7qKST4vY8fCDl0o4qbhW89wt14iFKza=
+p-79eaPenSjolL-qbsjdG66rJY_J6U82yqiQBkVB7ZTTYnAzr1Nr-hj5Qqdbk3dcIgqlaXjG8nc=
+ViuT-fC8zJAWebRq0ycxR_nKK1bDVV4LoJ6OxW23w~" target=3D"_blank" rel=3D"noopen=
+er"> <img style=3D"clear: both; display: block; height: auto; max-height: 1=
+7px; max-width: 19px; outline: none; text-decoration: none; width: 100%;" s=
+rc=3D"https://s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_1=
+8twitter.png" width=3D"19" height=3D"" border=3D"0" /> </a></td><td style=
+=3D"direction: ltr; text-align: left;" align=3D"right"><a href=3D"https://t=
+racking.icims.com/f/a/sr_PZD-A_jgy5ZpHAP7ANQ~~/AAIB5hA~/e7q2Y-MweYsdoNmyG4k=
+7PVO1hMdRNutP95uUVo4tDtuMWVh8a7loBa1WWXdYh7xpUjYaZZ-4_tyUWo2GqD9Z7IKQ1QcPqC=
+zQrqWGoov10CLYJvdpoEVAjabkPeg95XE2ovWAFVU2MkOu4nsKtRSWHCR5God0LBgbJYdPIhUD0=
+Vfuk94sIfMgNr0gKE31vdzOnUuIG7zZwppl3bu08sNFvYyIUP09w7k7aaQIbPgG2jwl6K4prLk3=
+-1Y1_BRobBznjzLHnjuxkEGnEuWQvn2qEqpcPdDUWNjcH7FFNt8kz3A~" target=3D"_blank"=
+ rel=3D"noopener"> <img style=3D"clear: both; display: block; height: auto;=
+ max-height: 17px; max-width: 16px; outline: none; text-decoration: none; w=
+idth: 100%;" src=3D"https://s3.amazonaws.com/uber-static/emails/2018/global=
+/icons/08_28_18instagram.png" width=3D"16" height=3D"" border=3D"0" /> </a>=
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr></tbody></table><table dir=3D"ltr" style=3D"border: none; bord=
+er-collapse: collapse; border-spacing: 0; display: inline-block; max-width:=
+ 336px; vertical-align: top; width: 100%;"><tbody><tr><td style=3D"padding-=
+left: 12px; padding-right: 12px; text-align: left; direction: ltr;"><table =
+style=3D"border: none; border-collapse: collapse; border-spacing: 0; width:=
+ 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tb=
+ody><tr><td style=3D"color: #e5e5e5; font-family: 'UberMoveText-Regular','H=
+elveticaNeue-Light','Helvetica Neue Light',Helvetica,Arial,sans-serif; font=
+-size: 10px; line-height: 16px; padding-bottom: 20px; padding-top: 10px; di=
+rection: ltr; text-align: left;">Uber Technologies <br />1515 3rd St., San =
+Francisco, CA 94158<br /><a href=3D"https://tracking.icims.com/f/a/jGz8wAVu=
+avgtZmw0cUN5cw~~/AAIB5hA~/TX744TeizZhgA4Uho-4TZQqMT16iu_w55wBpT_nIqYbrYsZY8=
+K17i56UYZt47YHpgosRxcvA6ZP1DFuMXIfcUL748UHRcNOuj9wNpdV5t40M4bbv-ZRPlSmqfjK3=
+FTMKOd_oj3llfMw3NyAMsM5HrwtFhzDzp31tNYyHGiKAjSDRzO9m0bq6IMgCG23q3m_2I2RkkKW=
+ujd1Aj7i0YfrTfmQRZiN8otfEqrEUBcptON_DhKCVz50rjL4b4z_QsCwZncxL0J4pr-VDmkWQvz=
+dJNw~~" target=3D"_blank" style=3D"text-decoration: none; color: #e5e5e5;" =
+rel=3D"noopener">Uber.com</a></td></tr></tbody></table></td></tr></tbody></=
+table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody=
+></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tb=
+ody></table><img src=3D"https://click.uber.com/q/dvdNMXL9rjTzEFR9LG-TOg~~/A=
+AAAAQA~/RgRdgsMfPlcEdWJlckIKAACfj6FbhGdkulINd2lzZUB1YmVyLmNvbVgEAAAAAA~~" a=
+lt=3D"" width=3D"1" height=3D"1" border=3D"0" /></div><p style=3D"margin: 0=
+px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p>=0D=0A<img border=3D"0" =
+width=3D"1" height=3D"1" alt=3D"" src=3D"https://tracking.icims.com/q/-h05c=
+MURtAj3wALEXGZARQ~~/AAIB5hA~/_5yVj13KVhJkAaI05TS7ADzmEt6CURwAP3BDtkw1UVCRKb=
+SNB5VgVTpz-mOmg1_58N5vEKAXmM8k3gq-XDVWVA~~">=0D=0A=0D=0A
+------=_Part_103908_1675556433.1773326717521--

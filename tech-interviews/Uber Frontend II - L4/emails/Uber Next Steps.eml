@@ -1,0 +1,471 @@
+Delivered-To: davi@rmconsult.io
+Received: by 2002:a05:7000:8652:b0:7ed:167a:af60 with SMTP id bc18csp1248510mab;
+        Mon, 9 Mar 2026 07:37:05 -0700 (PDT)
+X-Received: by 2002:a05:6402:2750:b0:660:eabc:9c70 with SMTP id 4fb4d7f45d1cf-6619d5349a1mr6749528a12.29.1773067025716;
+        Mon, 09 Mar 2026 07:37:05 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1773067025; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=jGNUVvJfBBQ5U1JrnFL6Kt6MC/NN6hOhXIRcEMkJ2/muQoZBOPlBuXZK8QGnn2jDoQ
+         yum+uPeiU9brMswvqLpX1Tyv5czvoF6FEfgnGvQYsDrK7m61iBp5Yma8fWBZHA+16Wsk
+         4e/iKFI6j5aHBd2BNIlHDiura9LX4hPA4AA+Z4cRWDWnZ6I1mNPNweGjklyjbqyssylD
+         QL6Zkcj0p1z+2VwG9ZNmAYGv5b+NlUfKN3FaOK8jbtBPHa61y2zEx0nFV5lngm0wWiaA
+         jzMFaPXWb7WshqnyJ3z5qjO0HSaKIxLKPCUkO+aREC4WkKipLXjrjja4H+qyA8oOXGZI
+         W24g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=mBSM3cgJqvYvxYzrFmR/vNs+VUJ33ezagpf1hItLlAE=;
+        fh=HBGRMLz8ffe7ICVUdZh5Jz1tNMjJDx7+rEHQmPY5ksA=;
+        b=HTJIZ6oRvZKt9wYqwLZ6fSOQCODOQjHafmC1DjGl60Wfq0KgNsqstZAcmhLJcOlFNg
+         cE/ZbV3Ln2BnxWzYe+3a9NtGI+1e7urlCOri7eaBbZPSg4ge36gVZIs/JQ3lLO10+u8X
+         IJfucBvPOYuIs3FWeXhQx37pQLHNav/CbVLhOyCfSvInt9Ac9n4hOBj5EYl8jbRNTW9Q
+         RILRanWLEUVHhKUwtss2TviZnc9A8Z6mzkFm3sVaZXgixcVb0OZGg5KJyZWyH9Mnbiy8
+         WIjwXLwPcrRduPwnI2y7CdjEsImwitkH30GpXiti9FkJKsKOjS+lxdAI5mvR3rtmmVau
+         w8sQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@uber.com header.s=google header.b="ATaTYeF/";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of carolina.lima@uber.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=carolina.lima@uber.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=uber.com;
+       dara=neutral header.i=@rmconsult.io
+Return-Path: <carolina.lima@uber.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-661a1ededa0sor2203494a12.6.2026.03.09.07.37.05
+        for <davi@rmconsult.io>
+        (Google Transport Security);
+        Mon, 09 Mar 2026 07:37:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of carolina.lima@uber.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@uber.com header.s=google header.b="ATaTYeF/";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of carolina.lima@uber.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=carolina.lima@uber.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=uber.com;
+       dara=neutral header.i=@rmconsult.io
+ARC-Seal: i=1; a=rsa-sha256; t=1773067025; cv=none;
+        d=google.com; s=arc-20240605;
+        b=IG0b7VOr0sm+IG7agJbg4PS6k9GSiTc0TfoxIG1RmHw+KyYA91p79jVLTlP5Nc0whx
+         ObJtbP/BP0IOmQiH1Ny+jyLvB2qE0YDnXMspGOxqy6Rk5BHWYlXvYTELHD9vxNq3DdeA
+         WHGNwysxj2fizcGAW+7KaHJmHEhHQXHRtrRcU9CLe+lcoHKAwC7iAZ1mmgeCzZtDR/4Q
+         j8CjUmLMCiSoct2Scx/B+0BNn/bmo4htw9CDjrUHAW4MzUn9DGhnFSkr6ruddFAeLGKD
+         exL7eX/vPER8+J2ctHWBh3OEKV4YTCFoUBw+rWV9F88cAipnNtpgWxy3uEgSVM/N8NYN
+         Ijlw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=mBSM3cgJqvYvxYzrFmR/vNs+VUJ33ezagpf1hItLlAE=;
+        fh=HBGRMLz8ffe7ICVUdZh5Jz1tNMjJDx7+rEHQmPY5ksA=;
+        b=iG4GOoMp0yCrnhsi6sO6qXCrtnhUUor5UsbnGrkwlp9sDlgzTxrz+E+BiX0qaYhh+e
+         0iPP+TUrOeGrAXGK3Y6A5WwRfrRjfanIXIHgq7LWSKtU8Z6kU+jdPAs4VHuMJ03HMYao
+         +nJ7vtBsj3OcadY67I2rzQrT85VOVMkMOjMgX3kr2TRw1q5alBi/sFKd+cyIIdYg4QxJ
+         9WGmcB6W5i9rJbyUZuaY+vRd/OCjHq4NRGAewJImhFIj64pGPbCfW7Q/FpycQRPZYq97
+         10xczkrfU0XKEFw4Fflrl/7JQsS2oKPROKrnuSGtDIgg26GLMlWSpYIYkYI9XNA3ydLd
+         rSeA==;
+        darn=rmconsult.io
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=uber.com; s=google; t=1773067025; x=1773671825; darn=rmconsult.io;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mBSM3cgJqvYvxYzrFmR/vNs+VUJ33ezagpf1hItLlAE=;
+        b=ATaTYeF/iG1RC3vopbn7ikh0NW4xEJOoVfmSEK58VwRD3QwcldyaV5QqqFrNT1pYT8
+         3iTq80YyMW/LTJr8OWEC4OgsAo6foj/Ymvyvx24uprCB9Kbv2DvyGuF59tGxSeMCqQkh
+         dRr1cgsGkg7fuRjK9lGtQny0ux34t5EmqbWsw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773067025; x=1773671825;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mBSM3cgJqvYvxYzrFmR/vNs+VUJ33ezagpf1hItLlAE=;
+        b=drX70IIe/LmYynBmApFJC2LZZCoPNkXA8KT86QRrxGYXb6nWLfypthpLUGldNncA3o
+         ytg41JxeuPOUogYknWAgUxshnTqjTM6jy02v9ENF1DS9DRX7YsWW10z4SgybvHYan6Qa
+         Xg0W29p3/f2Wk34Z4OQWoal0Eg1kEIOqP4/sMuvf93aiTyGs6LBerddc7DSpcZ7UgMnF
+         LdLojHOcYix06msBDolCiqSY260wXolRcO6KiCpxDEXrlyprnlCrBGT9CgE5d8Q51GhN
+         Pb/xVSbmNvmHasadyqnAc/sghxKoqIH5urDs9fMnrzozimPVKq70J3S7Eejz/zC8Ff7o
+         IV7A==
+X-Gm-Message-State: AOJu0YwVKoa6f4dKkccfkvri3o331g5srAbIev9EVmQ0iAyw1j37KLg9
+	JSXP6ITT4Ex9wDmwsPwVL9al6guF1Bcycd2Gt0KWn59V5YJPBn4au6AQEwYFdJBobAnSrl+iV5I
+	ffxP4ItUcZ7CEye7g930vbYHx6xcJ2BoipJUNs700WrToKxJnsUHljuH4ig==
+X-Gm-Gg: ATEYQzwUhEH4sJMNKz5JOR1uf2pQ5wUXLTYcatEQJXVN4LECj0S2Lw/GMGaXXXBujvh
+	6crMolh6ilg6hkoo7lsokdixLmwWTQVNbLiM9oLMDUUEDXIsVq7UG4qSm58vMcpqAx8pk/TaC9j
+	t3nTE+CaP2KqXIpmr7DPzc0yhi3+56uMr6IBj8CU6rs/g4iqKyBZuXyK2rg8Lo6dMws9KFGoDMh
+	Ti3gnaoe0E9ZoEw6+c8TLkAUIHc0Veg1GdRwAf+Yu3AkOeR4IMfRMhpJQDFRDr4l8bdOp5AsxbP
+	caIxb0HfOivyBbTjd1TLMILyUgTKjH9y66yUOgOj0ihI+A/Y
+X-Received: by 2002:a05:6402:2683:b0:65f:730d:8010 with SMTP id
+ 4fb4d7f45d1cf-6619d45a03dmr6416660a12.3.1773067024099; Mon, 09 Mar 2026
+ 07:37:04 -0700 (PDT)
+MIME-Version: 1.0
+From: Carolina Lima <carolina.lima@uber.com>
+Date: Mon, 9 Mar 2026 11:36:27 -0300
+X-Gm-Features: AaiRm51Y5eSU-kDnbaUHJTDYeU1ug-v8Xbv6rBaOE15mPX5kceBuK4phe9-Ld4E
+Message-ID: <CAEypHzJGmTTa2m4gCvoMnL-=5CseAAtwL92msSyx6CJ39yJwdA@mail.gmail.com>
+Subject: Uber Next Steps
+To: davi@rmconsult.io
+Content-Type: multipart/alternative; boundary="00000000000022d291064c985616"
+
+--00000000000022d291064c985616
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+ Oi Davi, obrigada pela conversa!
+
+Gostaria de te convidar para a pr=C3=B3xima fase do nosso processo seletivo=
+: a
+entrevista chamada Business Phone Screen (BPS) para a posi=C3=A7=C3=A3o de =
+Software
+Engineer II - L4. Caso queira conhecer um pouco mais sobre o Frontend aqui
+na Uber, segue o link do nosso =C3=BAltimo meetup
+<https://www.youtube.com/watch?v=3DEGHHaOgUzPU>
+
+Essa entrevista tem como foco a resolu=C3=A7=C3=A3o de problemas, abordando=
+ tanto
+C=C3=B3digo (Algoritmos) quanto Design & Arquitetura (D&A). Nosso objetivo =
+=C3=A9
+avaliar suas habilidades de programa=C3=A7=C3=A3o e entender melhor a compl=
+exidade e
+o escopo dos seus projetos anteriores sob a =C3=B3tica de D&A. N=C3=A3o se =
+trata de
+uma an=C3=A1lise exaustiva da sua profundidade t=C3=A9cnica ou expertise em=
+ design,
+mas sim de uma avalia=C3=A7=C3=A3o inicial para determinar sua qualifica=C3=
+=A7=C3=A3o para
+seguir para as pr=C3=B3ximas entrevistas.
+
+*Estrutura da entrevista*
+~45 minutos: Codifica=C3=A7=C3=A3o
+~15 minutos: Design & Arquitetura
+
+*Linguagem de programa=C3=A7=C3=A3o*
+Fica a seu crit=C3=A9rio! Escolha com sabedoria e certifique-se de estar be=
+m
+confort=C3=A1vel e proficiente nela.
+
+*Como se preparar*
+Temos uma p=C3=A1gina espec=C3=ADfica para prepara=C3=A7=C3=A3o, voc=C3=AA =
+encontra mais informa=C3=A7=C3=B5es
+aqui
+<https://www.uber.com/us/en/careers/engineering-interview-guide/?nocache=3D=
+true>
+.
+> Pratique algoritmo: se voc=C3=AA est=C3=A1 enferrujado(a) ou n=C3=A3o tem=
+ familiaridade
+com pair programming, vale a pena treinar antes. Resolva alguns desafios de
+diferentes n=C3=ADveis de dificuldade em plataformas como LeetCode. Teste s=
+eu
+c=C3=B3digo continuamente e foque nos seguintes t=C3=B3picos:
+
+   - Common data structures and algorithms (e.g., hash tables, trees,
+   stacks).
+   - Data structures, particularly the ones used most often (e.g., arrays,
+   stacks (or queues), hash tables, trees, graphs, and heaps).
+   - Runtime analysis (Big-O notation) and optimization techniques.
+   - Problem-solving approaches: Practice solving scenarios common in
+   large-scale tech companies.
+
+*Materiais de estudo*
+
+
+   - Graphos Mock Interview + Tips
+   <https://www.youtube.com/watch?v=3DuTnJoAIZoF0>
+   - V=C3=ADdeo Mock interview
+   <https://www.youtube.com/watch?v=3DYBKfvoUu5LY&feature=3Dyoutu.be>
+   - V=C3=ADdeo Mock interview 2 <https://www.youtube.com/watch?v=3DxxAnIoI=
+xWGM>
+   - Coding interview: dicas para o processo seletivo de Engenharia da Uber
+   <https://www.uber.com/pt-BR/blog/coding-interview-dicas-para-o-processo-=
+seletivo-de-engenharia-da-uber/>
+
+
+
+*EXTRA* Exerc=C3=ADcios no Leet Code para praticar c=C3=B3digo:
+
+
+   - Number of Provinces
+   <https://leetcode.com/problems/number-of-provinces/description/>
+   - House Robber III
+   <https://leetcode.com/problems/house-robber-iii/description/>
+   - Number of Enclaves
+   <https://leetcode.com/problems/number-of-enclaves/description/>
+   - Longest Consecutive Sequence
+   <https://leetcode.com/problems/longest-consecutive-sequence/description/=
+>
+
+
+*Durante a entrevista*
+
+   - Be ready to write and explain your solution in a live coding
+   environment.
+   - Ask clarifying questions: Analyze the problem and make sure that you
+   fully understand it before jumping in. It=E2=80=99s OK to ask clarifying=
+ questions
+   during the interview to make sure you understand the exact problem you a=
+re
+   trying to solve. Also, breaking down the problem into smaller pieces can=
+ be
+   helpful.
+   - Account for edge cases: Think through and address edge cases to show
+   thorough problem analysis. One technique to write a better solution is t=
+o
+   consider what you would catch if you were code reviewing your code.
+   - Communicate your thought process: Walk the interviewer through your
+   reasoning as you solve the problem. Before implementing, discuss your
+   proposed solution to ensure alignment.
+   - Keep things simple: If you find the solution getting excessively
+   complex, step back and ask if there=E2=80=99s a simpler way to solve it.=
+ It may
+   also be helpful to write everything out so you can see insights and bugs
+   faster and make fewer mistakes.
+   - Test and debug: Continuously test your code and handle exceptions to
+   confirm your solution works.
+   - Write clear, readable code: Use meaningful variable names and keep
+   formatting consistent for easy understanding.
+   - Engage with follow-up questions: Be prepared to dive deeper into your
+   solution and discuss alternative approaches or improvements.
+
+
+   - Refresh yourself on Design & Architecture:
+      - Be prepared to talk about a project that highlights the complexity
+      and scope of your role, including architectural components and design
+      decision-making.
+      - Be ready to discuss trade-offs: Why was one technology chosen over
+      another? What was the reasoning behind key decisions?
+   - Other:
+      - Reflect on impact: Think about the scope and results of your past
+      roles and how they relate to solving problems at Uber.
+      - Review the job description: Identify relevant experiences from your
+      background and prepare to showcase them during the interview.
+      - Prepare questions: Consider any role-specific or team-related
+      questions to ask your interviewer.
+
+
+E a dica mais importante: estudar faz toda a diferen=C3=A7a! Acreditamos qu=
+e
+esse material ser=C3=A1 =C3=BAtil para sua prepara=C3=A7=C3=A3o, e estamos =
+torcendo para que
+voc=C3=AA tenha um =C3=B3timo desempenho!
+
+Em breve, o time de Talent Coordinators entrar=C3=A1 em contato por e-mail =
+para
+confirmar sua disponibilidade, al=C3=A9m de compartilhar o nome de quem vai=
+ te
+entrevistar, o link do Zoom e o link do exerc=C3=ADcio. Combinado?
+
+Caso tenha alguma d=C3=BAvida, =C3=A9 s=C3=B3 me avisar!
+Atenciosamente,
+
+--=20
+
+Carolina Lima (she/her)
+
+Tech Recruiter LATAM
+Uber Careers <https://www.uber.com/us/en/careers/> l LinkedIn
+<https://www.linkedin.com/in/carolina-lima-bh/>
+Uber takes your privacy seriously. Please note by agreeing to engage with
+Uber Talent Acquisition, you are consenting on the collection and use of
+your candidate information. To learn how we collect and use your
+information, and learn about your rights under GDPR, please visit our Priva=
+cy
+Statement
+<https://console.ebsta.com/linktracking/track.aspx?trackid=3D2a9bea7a-c110-=
+4f07-b9ff-1077c35ce7ed-1621877554749&linktrackingid=3D3&linkuri=3Dhttps%3A%=
+2F%2Fwww.uber.com%2Fen-SG%2Flegal%2Fprivacy%2Fcandidate-privacy-statement%2=
+Fen%2F>
+. Uber may use Google Meet Transcriber, and AI tools to summarize your
+feedback during live sessions for Uber's internal use only.  Please let
+your recruiter know in advance by email whether you would like to opt out.
+You may also opt out during the meeting.
+
+--00000000000022d291064c985616
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>
+
+<span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Oi Davi, ob=
+rigada pela conversa!</span></span><br><br><span style=3D"font-size:12px"><=
+span style=3D"color:rgb(0,0,0)">Gostaria de te convidar para a pr=C3=B3xima=
+ fase do nosso processo seletivo:=C2=A0a entrevista chamada Business Phone =
+Screen=C2=A0(BPS)=C2=A0para a posi=C3=A7=C3=A3o de Software Engineer II - L=
+4.=C2=A0Caso queira conhecer um pouco mais sobre o Frontend aqui na Uber,=
+=C2=A0<a href=3D"https://www.youtube.com/watch?v=3DEGHHaOgUzPU">segue o lin=
+k do nosso =C3=BAltimo meetup</a></span></span><br><br><span style=3D"font-=
+size:12px"><span style=3D"color:rgb(0,0,0)">Essa entrevista tem como foco a=
+ resolu=C3=A7=C3=A3o de problemas, abordando tanto C=C3=B3digo (Algoritmos)=
+=C2=A0quanto Design &amp; Arquitetura (D&amp;A). Nosso objetivo =C3=A9 aval=
+iar suas habilidades de programa=C3=A7=C3=A3o e entender melhor a complexid=
+ade e o escopo dos seus projetos anteriores sob a =C3=B3tica de D&amp;A. N=
+=C3=A3o se trata de uma an=C3=A1lise exaustiva da sua profundidade t=C3=A9c=
+nica ou expertise em design, mas sim de uma avalia=C3=A7=C3=A3o inicial par=
+a determinar sua qualifica=C3=A7=C3=A3o=C2=A0para seguir para as=C2=A0pr=C3=
+=B3ximas entrevistas.</span></span><br><br><b><span style=3D"font-size:12px=
+"><span style=3D"color:rgb(0,0,0)">Estrutura da=C2=A0entrevista</span></spa=
+n></b><br><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">~=
+45 minutos: Codifica=C3=A7=C3=A3o</span></span><br><span style=3D"font-size=
+:12px"><span style=3D"color:rgb(0,0,0)">~15 minutos: Design &amp; Arquitetu=
+ra</span></span><br><br><b><span style=3D"font-size:12px"><span style=3D"co=
+lor:rgb(0,0,0)">Linguagem de programa=C3=A7=C3=A3o</span></span></b><br><sp=
+an style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Fica a seu cri=
+t=C3=A9rio! Escolha com sabedoria e certifique-se de estar bem confort=C3=
+=A1vel e proficiente nela.</span></span><br><br><b><span style=3D"font-size=
+:12px"><span style=3D"color:rgb(0,0,0)">Como se preparar</span></span></b><=
+br><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Temos um=
+a p=C3=A1gina espec=C3=ADfica para prepara=C3=A7=C3=A3o, voc=C3=AA encontra=
+=C2=A0<a href=3D"https://www.uber.com/us/en/careers/engineering-interview-g=
+uide/?nocache=3Dtrue">mais informa=C3=A7=C3=B5es aqui</a>.</span></span><br=
+><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">&gt; Prati=
+que=C2=A0algoritmo:=C2=A0se voc=C3=AA est=C3=A1 enferrujado(a) ou n=C3=A3o =
+tem familiaridade com=C2=A0pair programming, vale a pena=C2=A0treinar antes=
+. Resolva alguns desafios de diferentes n=C3=ADveis de dificuldade em plata=
+formas como LeetCode. Teste seu c=C3=B3digo continuamente e foque nos segui=
+ntes t=C3=B3picos:</span></span><ul><li><span style=3D"font-size:12px"><spa=
+n style=3D"color:rgb(0,0,0)">Common data structures and algorithms (e.g., h=
+ash tables, trees, stacks).</span></span></li><li><span style=3D"font-size:=
+12px"><span style=3D"color:rgb(0,0,0)">Data structures, particularly the on=
+es used most often (e.g., arrays, stacks (or queues), hash tables, trees, g=
+raphs, and heaps).</span></span></li><li><span style=3D"font-size:12px"><sp=
+an style=3D"color:rgb(0,0,0)">Runtime analysis (Big-O notation) and optimiz=
+ation techniques.</span></span></li><li><span style=3D"font-size:12px"><spa=
+n style=3D"color:rgb(0,0,0)">Problem-solving approaches: Practice solving s=
+cenarios common in large-scale tech companies.</span></span></li></ul><b><s=
+pan style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Materiais de =
+estudo</span></span></b><br><br><ul><li><a href=3D"https://www.youtube.com/=
+watch?v=3DuTnJoAIZoF0"><span style=3D"font-size:12px"><span style=3D"color:=
+rgb(0,0,0)">Graphos Mock Interview + Tips</span></span></a></li><li><a href=
+=3D"https://www.youtube.com/watch?v=3DYBKfvoUu5LY&amp;feature=3Dyoutu.be"><=
+span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">V=C3=ADdeo M=
+ock interview</span></span></a><span style=3D"font-size:12px"><span style=
+=3D"color:rgb(0,0,0)">=C2=A0</span></span></li><li><a href=3D"https://www.y=
+outube.com/watch?v=3DxxAnIoIxWGM"><span style=3D"font-size:12px"><span styl=
+e=3D"color:rgb(0,0,0)">V=C3=ADdeo Mock interview 2</span></span></a></li><l=
+i><a href=3D"https://www.uber.com/pt-BR/blog/coding-interview-dicas-para-o-=
+processo-seletivo-de-engenharia-da-uber/"><span style=3D"font-size:12px"><s=
+pan style=3D"color:rgb(0,0,0)">Coding interview: dicas para o processo sele=
+tivo de Engenharia da Uber</span></span></a></li></ul><br><br><b><u><span s=
+tyle=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">EXTRA</span></span=
+></u></b><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">=
+=C2=A0Exerc=C3=ADcios no Leet Code para praticar c=C3=B3digo:</span></span>=
+<br><br><ul><li><a href=3D"https://leetcode.com/problems/number-of-province=
+s/description/"><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0=
+,0)">Number of Provinces</span></span></a></li><li><a href=3D"https://leetc=
+ode.com/problems/house-robber-iii/description/"><span style=3D"font-size:12=
+px"><span style=3D"color:rgb(0,0,0)">House Robber III</span></span></a></li=
+><li><a href=3D"https://leetcode.com/problems/number-of-enclaves/descriptio=
+n/"><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Number =
+of Enclaves</span></span></a></li><li><a href=3D"https://leetcode.com/probl=
+ems/longest-consecutive-sequence/description/"><span style=3D"font-size:12p=
+x"><span style=3D"color:rgb(0,0,0)">Longest Consecutive Sequence</span></sp=
+an></a></li></ul><br><b><span style=3D"font-size:12px"><span style=3D"color=
+:rgb(0,0,0)">Durante a entrevista</span></span></b><ul><li><span style=3D"f=
+ont-size:12px"><span style=3D"color:rgb(0,0,0)">Be ready to write and expla=
+in your solution in a live coding environment.</span></span></li><li><span =
+style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Ask clarifying qu=
+estions: Analyze the problem and make sure that you fully understand it bef=
+ore jumping in. It=E2=80=99s OK to ask clarifying questions during the inte=
+rview to make sure you understand the exact problem you are trying to solve=
+. Also, breaking down the problem into smaller pieces can be helpful.</span=
+></span></li><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,=
+0,0)">Account for edge cases: Think through and address edge cases to show =
+thorough problem analysis. One technique to write a better solution is to c=
+onsider what you would catch if you were code reviewing your code.</span></=
+span></li><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0=
+)">Communicate your thought process: Walk the interviewer through your reas=
+oning as you solve the problem. Before implementing, discuss your proposed =
+solution to ensure alignment.</span></span></li><li><span style=3D"font-siz=
+e:12px"><span style=3D"color:rgb(0,0,0)">Keep things simple: If you find th=
+e solution getting excessively complex, step back and ask if there=E2=80=99=
+s a simpler way to solve it. It may also be helpful to write everything out=
+ so you can see insights and bugs faster and make fewer mistakes.</span></s=
+pan></li><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)=
+">Test and debug: Continuously test your code and handle exceptions to conf=
+irm your solution works.</span></span></li><li><span style=3D"font-size:12p=
+x"><span style=3D"color:rgb(0,0,0)">Write clear, readable code: Use meaning=
+ful variable names and keep formatting consistent for easy understanding.</=
+span></span></li><li><span style=3D"font-size:12px"><span style=3D"color:rg=
+b(0,0,0)">Engage with follow-up questions: Be prepared to dive deeper into =
+your solution and discuss alternative approaches or improvements.</span></s=
+pan></li></ul><ul><li><span style=3D"font-size:12px"><span style=3D"color:r=
+gb(0,0,0)">Refresh yourself on Design &amp; Architecture:</span></span></li=
+><ul><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Be=
+ prepared to talk about a project that highlights the complexity and scope =
+of your role, including architectural components and design decision-making=
+.</span></span></li><li><span style=3D"font-size:12px"><span style=3D"color=
+:rgb(0,0,0)">Be ready to discuss trade-offs: Why was one technology chosen =
+over another? What was the reasoning behind key decisions?</span></span></l=
+i></ul><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">=
+Other:</span></span></li><ul><li><span style=3D"font-size:12px"><span style=
+=3D"color:rgb(0,0,0)">Reflect on impact: Think about the scope and results =
+of your past roles and how they relate to solving problems at Uber.</span><=
+/span></li><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,=
+0)">Review the job description: Identify relevant experiences from your bac=
+kground and prepare to showcase them during the interview.</span></span></l=
+i><li><span style=3D"font-size:12px"><span style=3D"color:rgb(0,0,0)">Prepa=
+re questions: Consider any role-specific or team-related questions to ask y=
+our interviewer.</span></span></li></ul></ul><br><span style=3D"font-size:1=
+2px"><span style=3D"color:rgb(0,0,0)">E a dica mais importante: estudar faz=
+ toda a diferen=C3=A7a! Acreditamos que esse material ser=C3=A1 =C3=BAtil p=
+ara sua prepara=C3=A7=C3=A3o, e estamos torcendo para que voc=C3=AA tenha u=
+m =C3=B3timo desempenho!</span></span><br><br><span style=3D"font-size:12px=
+"><span style=3D"color:rgb(0,0,0)">Em breve, o time de Talent Coordinators =
+entrar=C3=A1 em contato por e-mail para confirmar sua disponibilidade, al=
+=C3=A9m de compartilhar o nome de quem vai te entrevistar, o link do Zoom e=
+ o link do exerc=C3=ADcio. Combinado?</span></span><br><br><span style=3D"f=
+ont-size:12px"><span style=3D"color:rgb(0,0,0)">Caso tenha alguma d=C3=BAvi=
+da, =C3=A9 s=C3=B3 me avisar!</span></span><br><span style=3D"font-size:12p=
+x"><span style=3D"color:rgb(0,0,0)">Atenciosamente,</span></span>
+
+</div><div><br></div><span class=3D"gmail_signature_prefix">-- </span><br><=
+div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature=
+"><div dir=3D"ltr"><div><span style=3D"background-color:transparent;font-fa=
+mily:Arial,sans-serif;font-style:italic;vertical-align:baseline"><table sty=
+le=3D"color:rgb(34,34,34);border:none;border-collapse:collapse"><tbody><tr =
+style=3D"height:37.5pt"><td style=3D"vertical-align:top;padding:5pt;overflo=
+w:hidden"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt"><span style=3D"font-size:11pt;font-family:&quot;Uber Move&quot;,s=
+ans-serif;color:rgb(0,0,0);background-color:transparent;vertical-align:base=
+line"><span style=3D"border:none;display:inline-block;overflow:hidden;width=
+:114px;height:49px"><img src=3D"https://lh7-rt.googleusercontent.com/docsz/=
+AD_4nXd6joLTn_9KU9wwA86EIAw_NlZYK0nKfD9t0fL3QqgHtPzUKcjZH67I2znDJxrKxDb9WN5=
+7W-y4L6l7RPpTcvW9wOS-sCqBga_arVmGgHxm97dAHqm3TcT29fHBXRAhTfrk5yYfAJyZfBITVV=
+RBYWTel4Bx?key=3DdscrrVQxWjxZa4B2shp3wQ" width=3D"114" height=3D"49" style=
+=3D"margin-left:0px;margin-top:0px"></span></span></p></td><td style=3D"ver=
+tical-align:top;padding:5pt;overflow:hidden"><p dir=3D"ltr" style=3D"font-f=
+amily:Arial,Helvetica,sans-serif;font-size:small;font-style:normal;color:rg=
+b(136,136,136);line-height:1.2;margin-top:1pt;margin-bottom:0pt"><span styl=
+e=3D"font-family:&quot;Uber Move&quot;,sans-serif;color:rgb(51,51,51);backg=
+round-color:transparent;font-weight:700;vertical-align:baseline">Carolina L=
+ima=C2=A0</span><span style=3D"font-family:&quot;Uber Move&quot;,sans-serif=
+;color:rgb(51,51,51);background-color:transparent;vertical-align:baseline">=
+(she/her)</span></p><p dir=3D"ltr" style=3D"font-family:Arial,Helvetica,san=
+s-serif;font-style:normal;line-height:1.2;margin-top:0pt;margin-bottom:0pt"=
+><span style=3D"font-size:12px;color:rgb(51,51,51);font-family:Helvetica">T=
+ech Recruiter LATAM</span><font size=3D"1" style=3D"font-size:small;color:r=
+gb(0,0,0);font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif"><br st=
+yle=3D"color:rgb(113,113,113);font-family:FF-Clan-Web-Pro,HelveticaNeueW01-=
+45Ligh,sans-serif"></font><span style=3D"font-family:Helvetica"><a href=3D"=
+https://www.uber.com/us/en/careers/" target=3D"_blank"><font color=3D"#3d85=
+c6">Uber Careers</font></a></span><span style=3D"color:rgb(0,0,0);font-fami=
+ly:&quot;Google Sans&quot;,Arial,sans-serif">=C2=A0</span><span style=3D"fo=
+nt-family:&quot;Google Sans&quot;,Arial,sans-serif"><font color=3D"#000000"=
+>l</font> <a href=3D"https://www.linkedin.com/in/carolina-lima-bh/" target=
+=3D"_blank"><font color=3D"#3d85c6">LinkedIn</font></a></span></p></td></tr=
+></tbody></table></span></div><span style=3D"background-color:transparent;f=
+ont-size:8pt;font-family:Arial,sans-serif;color:rgb(27,28,29);font-style:it=
+alic;vertical-align:baseline">Uber takes your privacy seriously. Please not=
+e by agreeing to engage with Uber Talent Acquisition, you are consenting on=
+ the collection and use of your candidate information. To learn how we coll=
+ect and use your information, and learn about your rights under GDPR, pleas=
+e visit our</span><a href=3D"https://console.ebsta.com/linktracking/track.a=
+spx?trackid=3D2a9bea7a-c110-4f07-b9ff-1077c35ce7ed-1621877554749&amp;linktr=
+ackingid=3D3&amp;linkuri=3Dhttps%3A%2F%2Fwww.uber.com%2Fen-SG%2Flegal%2Fpri=
+vacy%2Fcandidate-privacy-statement%2Fen%2F" target=3D"_blank"><span style=
+=3D"font-size:8pt;font-family:Arial,sans-serif;color:rgb(0,0,0);font-style:=
+italic;vertical-align:baseline">=C2=A0</span><span style=3D"font-size:8pt;f=
+ont-family:Arial,sans-serif;color:rgb(17,85,204);font-style:italic;vertical=
+-align:baseline">Privacy Statement</span></a><span style=3D"background-colo=
+r:transparent;font-size:8pt;font-family:Arial,sans-serif;color:rgb(27,28,29=
+);font-style:italic;vertical-align:baseline">.=C2=A0</span><span style=3D"f=
+ont-size:8pt;font-family:Arial,sans-serif;color:rgb(0,0,0);font-style:itali=
+c;vertical-align:baseline">Uber may use Google Meet Transcriber, and AI too=
+ls to summarize your feedback during live sessions for Uber&#39;s internal =
+use only.=C2=A0 Please let your recruiter know in advance by email whether =
+you would like to opt out. You may also opt out during the meeting.</span><=
+/div></div></div>
+
+--00000000000022d291064c985616--

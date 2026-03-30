@@ -34,3 +34,10 @@ Author: Nic Barker
 Thumbnail: https://i.ytimg.com/vi/y11XNXi9dgs/mqdefault.jpg
 AuthorUrl: https://www.youtube.com/@nicbarkeragain
 ```
+```vid
+https://www.youtube.com/watch?v=xo7XrRVxH8Y
+Title: 8 patterns to solve 80% Leetcode problems
+Author: Sahil & Sarra
+Thumbnail: https://i.ytimg.com/vi/xo7XrRVxH8Y/mqdefault.jpg
+AuthorUrl: https://www.youtube.com/@sahilandsarra
+```

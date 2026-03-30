@@ -1,0 +1,484 @@
+Delivered-To: davi@rmconsult.io
+Received: by 2002:a05:7000:8652:b0:7ed:167a:af60 with SMTP id bc18csp2111482mab;
+        Tue, 10 Mar 2026 14:04:42 -0700 (PDT)
+X-Received: by 2002:a53:cc48:0:b0:649:45c2:6d62 with SMTP id 956f58d0204a3-64d6569bde5mr103918d50.5.1773176681483;
+        Tue, 10 Mar 2026 14:04:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773176681; cv=none;
+        d=google.com; s=arc-20240605;
+        b=EIpREdraUBaQLxplQ4rB+TpQGMUWmSh1Qs27Huj+vrLoUWc5aAJ6Z69B691OTla8b2
+         kVlk3gKwZXM/ihxwwF761iMS2JsMOiTfM5IgIYgsEpsmKA1tV8XcL2qvNFw/lFzcFBmE
+         UNYSlstQsgrozFBFz9/EY33BfpZgeNZ80Kn6gG94BZU+3PA196l+4fszuKAJtUYB6aMK
+         6ML8D19YocZCTPQR7oRvk5uLAK6bdMo9nLog4ElJq4dQajz80Nez9gDN3Y1XlbQDRx6O
+         56cwlDVvK99vObBWZTz49TIvWBoPyB2RQwD9TbznWTZJ4KS/tB7NuKIVMv9fAFicbdNI
+         PfPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-id:list-unsubscribe-post:list-unsubscribe:mime-version:subject
+         :message-id:cc:to:reply-to:from:date:dkim-signature;
+        bh=nmcI2SSLoK1U8YJGE0UqyXsUmJvBVgZD8fpIk7ekuUQ=;
+        fh=t970XWhN25s6ymnhFc5EroU+yDuxLVyfOrA6513VT1Q=;
+        b=hCZI7rzG3eAZGDX62XTvvKziJ2l86gs9RyJZ45VQLeXFHg6D/k0JPsnaEQTCBVo/Yu
+         XGKFkLh+8jUthOn9IT6wl3se+m7yp/juWGpXNniZZADQpQNbPgQWq1ggA8hiGXb6ogwn
+         zj/yEc1US1IE0oZ2SQ4NvpvrrxYM17weuSE3xhO876Okj0DW3QqEsty+Fcx4+nRTMLHH
+         Do8FnJqaHEDofd0U3s+K4gyIs62MSDJ4UGEu3aR/+x9OHY/v8+4KZjQmaSuAsctKI082
+         zKlQ4h5H5zwtFUWLP1/7JrcBj1Q80ljhEv9tzmcnCThXjZ74SRhMJBwmLwZcWgq7CJhA
+         jt+Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@talent.icims.com header.s=scph1117 header.b="OF/W1gGw";
+       spf=pass (google.com: domain of msprvs1=205299lyptbhu=bounces-131558-5398@bounces.icims.com designates 162.247.166.154 as permitted sender) smtp.mailfrom="msprvs1=205299LypTbHu=bounces-131558-5398@bounces.icims.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=talent.icims.com
+Return-Path: <msprvs1=205299LypTbHu=bounces-131558-5398@bounces.icims.com>
+Received: from icims-talentplatform-166154.email.icims.tools (icims-talentplatform-166154.email.icims.tools. [162.247.166.154])
+        by mx.google.com with ESMTPS id 956f58d0204a3-64d651773c2si260337d50.125.2026.03.10.14.04.41
+        for <davi@rmconsult.io>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2026 14:04:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=205299lyptbhu=bounces-131558-5398@bounces.icims.com designates 162.247.166.154 as permitted sender) client-ip=162.247.166.154;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@talent.icims.com header.s=scph1117 header.b="OF/W1gGw";
+       spf=pass (google.com: domain of msprvs1=205299lyptbhu=bounces-131558-5398@bounces.icims.com designates 162.247.166.154 as permitted sender) smtp.mailfrom="msprvs1=205299LypTbHu=bounces-131558-5398@bounces.icims.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=talent.icims.com
+Return-Path: <msprvs1=205299LypTbHu=bounces-131558-5398@bounces.icims.com>
+X-MSFBL: vLgn6z5pokffm8bPVWAPXI0XPT9BJ4KsVZBPoXgRMmU=|eyJ0ZW5hbnRfaWQiOiJ
+	zcGMiLCJyIjoiZGF2aUBybWNvbnN1bHQuaW8iLCJtZXNzYWdlX2lkIjoiNjlhZDY
+	4ODdiMDY5MDMzNjU0ZTIiLCJzdWJhY2NvdW50X2lkIjoiNTM5OCIsImN1c3RvbWV
+	yX2lkIjoiMTMxNTU4In0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=talent.icims.com;
+	s=scph1117; t=1773176680; i=@talent.icims.com;
+	bh=nmcI2SSLoK1U8YJGE0UqyXsUmJvBVgZD8fpIk7ekuUQ=;
+	h=Date:From:To:Cc:Message-ID:Subject:Content-Type:X-CSA-Complaints:
+	 List-Unsubscribe:List-Unsubscribe-Post:From:To:Cc:Subject;
+	b=OF/W1gGw7rTzxvcMegaoiacn8Bv/ovVBMZYoPFm0yQwhM1DOj03X0zDGOmRLUq6l7
+	 FEzfDMZ8G+vXbcXISn7m9lW1d61JKE+UrZNq4Cyq3MwLFenPH/nKhHmj9HMAp48Cay
+	 Xk9u1Zz8nNJ+11o8Io45h7YNF40XLOMYEaYILMKc=
+Received: from [10.90.24.13] ([10.90.24.13])
+	by i-057b46139e5ea27cd.mta1vrest.sd.prd.sparkpost (ecelerity 5.2.0.75207 r(msys-ecelerity:tags/5.2.0.3)) with REST
+	id 2E/4D-34699-86780B96; Tue, 10 Mar 2026 21:04:40 +0000
+Date: Tue, 10 Mar 2026 17:04:40 -0400 (EDT)
+From: Samira Costa <uber+email+3qb1k-915233746a@talent.icims.com>
+Reply-To: Samira Costa <uber+email+3qb1k-915233746a@talent.icims.com>
+To: davi@rmconsult.io
+Cc: sgomes20@ext.uber.com
+Message-ID: <899489648.58935.1773176680222@ip-10-47-161-56.ec2.internal>
+Subject: Next Steps at Uber - Davi
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_58933_1244901911.1773176680218"
+X-iRecruiter-Type: IE
+X-iCIMS-Type: IE
+X-iCIMS-Priority: Normal
+X-iRecruiter-Source: uber
+X-iCIMS-Message-Id: 17529662./nlRdV0r6DVV58QoLiZbbgsP5GmPQD6DtAs//mDeAVg=
+X-CSA-Complaints: csa-complaints@eco.de
+X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true, "transactional": false, "ip_pool": "prd_us_direct" } }
+List-Unsubscribe: <mailto:unsubscribe@unsub.spmta.com?subject=unsubscribe:_CrlXTuD02cz_aKeexTbEo7_QIVwZN2VCN6slpJ7LlY~|eyAicmNwdF90byI6ICJkYXZpQHJtY29uc3VsdC5pbyIsICJ0ZW5hbnRfaWQiOiAic3BjIiwgImN1c3RvbWVyX2lkIjogIjEzMTU1OCIsICJtZXNzYWdlX2lkIjogIjY5YWQ2ODg3YjA2OTAzMzY1NGUyIiwgInN1YmFjY291bnRfaWQiOiAiNTM5OCIgfQ~~>,<https://unsubscribe.spmta.com/u/s_QwgS0SI7vYmPJUMIaAAA~~/AAIB5hA~/TsfxgDjhkaB-zHwawUcfOHILLjZ6muytfawuMml6BPNR3Eu2EteGQSff8MWrKuczfAOsu4nPCuFeQg2pbe6Ejg~~>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: <spc.131558.5398.sparkpostmail.com>
+
+------=_Part_58933_1244901911.1773176680218
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+=C2=A0
+=C2=A0
+=C2=A0
+=C2=A0
+=20
+=20
+=20
+=20
+=C2=A0=20
+Hi Davi,
+
+We really enjoyed learning about your background and experiences and are ex=
+cited to move you forward in the interview process for the Software Enginee=
+r II - Frontend role.=C2=A0
+=C2=A0
+The next step consists of a 60-minutes interview. Please take a moment to s=
+hare what your availability looks like from March 30th till April 10th (at =
+least 5 different time blocks split across multiple days. For example, Marc=
+h 10th, 2026 between 9am-6pm, including your location/time zone). Please no=
+te that we have interviewers globally, so the more options the better, cons=
+idering timezone differences.
+=C2=A0
+Availability Example:
+mm/dd from 02:00pm to 04:30pm and from 05:00pm to 06:00pm Brazil time
+mm/dd from 01:00pm onwards Brazil time
+mm/dd from 10:00am to 05:00pm Brazil time
+mm/dd from 10am onwards=20
+mm/dd all day
+=C2=A0
+
+At Uber, reliability is core to how we work=E2=80=94it=E2=80=99s how we mov=
+e the world. To help us move quickly, please "reply all" and=C2=A0share tim=
+e blocks where you are fully available. Our interviewers prepare carefully =
+for each conversation, so we ask that you select dates you can truly honor.=
+ This helps us keep momentum in your process and ensures everyone is set up=
+ for a great discussion.
+
+Once confirmed on our side, you will receive the detailed interview schedul=
+e via email. Please keep an eye on your spam folder as well.
+=20
+Thanks,
+Samira=C2=A0
+Talent Coordinator
+=20
+Follow us on LinkedIn to learn more about working at Uber.=E2=9D=AF
+=C2=A0
+Uber is committed to an inclusive work environment and we want to make this=
+ a great interview experience for you. If you have a disability or special =
+need that requires accommodation, please let us know by completing thisform=
+.=20
+=C2=A0
+Uber takes your privacy seriously. Please note by agreeing to engage with U=
+ber Recruiting, you are consenting on the collection and use of your candid=
+ate information. To learn how we collect and use your information, and lear=
+n about your rights under GDPR, please visit our Privacy Statement.
+=20
+=20
+=20
+=C2=A0
+=20
+=20
+=C2=A0=20
+=20
+=20
+=20
+=20
+=20
+=20
+=C2=A0=20
+Get help  Privacy  Terms =20
+=20
+Community=20
+=20
+=20
+=20
+=C2=A0=20
+=20
+  =20
+=20
+=20
+=20
+Uber Technologies=20
+1455 Market St., San Francisco, CA 94103=20
+Uber.com=20
+=20
+=20
+=20
+=20
+=20
+=20
+=20
+=C2=A0
+=C2=A0
+=C2=A0
+=C2=A0
+------=_Part_58933_1244901911.1773176680218
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><p =
+style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><div d=
+ir=3D"ltr" style=3D"background-color: #d6d6d5; margin: 0; min-width: 100%; =
+padding: 0; width: 100%;"><table style=3D"background-color: #d6d6d5; border=
+: 0; border-collapse: collapse; border-spacing: 0;" border=3D"0" width=3D"1=
+00%" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#d6d6d5"><tbody><tr><td=
+ style=3D"display: block;" align=3D"center"><table style=3D"border: 0; bord=
+er-collapse: collapse; border-spacing: 0; max-width: 700px;" border=3D"0" w=
+idth=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"b=
+ackground-color: #ffffff;"><table style=3D"border: none; border-collapse: c=
+ollapse; border-spacing: 0; width: 100%;" border=3D"0" width=3D"100%" cells=
+pacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"background-color: #0=
+00000; padding: 0px 14px 0px 14px; direction: ltr; text-align: left;" align=
+=3D"left"><table style=3D"border: none; border-collapse: collapse; border-s=
+pacing: 0; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><=
+tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"m=
+argin: 0 auto; border: none; border-collapse: collapse; border-spacing: 0; =
+max-width: 560px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"center"><tbody><tr><td style=3D"padding-left: 12px; padding=
+-right: 12px; direction: ltr; text-align: left;"><table style=3D"border: no=
+ne; border-collapse: collapse; border-spacing: 0; table-layout: fixed; widt=
+h: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" a=
+lign=3D"left"><tbody><tr><td style=3D"direction: ltr; text-align: left;"><i=
+mg style=3D"clear: both; display: block; max-width: 100%; outline: none; te=
+xt-decoration: none;" src=3D"https://s3.amazonaws.com/uber-static/emails/20=
+18/global/logos/uber-logo_75x75_2x_white.png" width=3D"75" height=3D"75" />=
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr><tr><td style=3D"padding: 0px 14px 0px 14px; direction: ltr; t=
+ext-align: left;" align=3D"left"><table style=3D"border: none; border-colla=
+pse: collapse; border-spacing: 0; width: 100%;" border=3D"0" cellspacing=3D=
+"0" cellpadding=3D"0"><tbody><tr><td style=3D"padding-top: 25px; padding-bo=
+ttom: 25px; direction: ltr; text-align: left;"><table style=3D"margin: 0 au=
+to; border: none; border-collapse: collapse; border-spacing: 0; max-width: =
+560px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=
+=3D"center"><tbody><tr><td style=3D"padding-left: 12px; padding-right: 12px=
+; direction: ltr; text-align: left;"><table style=3D"border: none; border-c=
+ollapse: collapse; border-spacing: 0; table-layout: fixed; width: 100%;" bo=
+rder=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" align=3D"left=
+"><tbody><tr><td style=3D"padding-top: 5px; padding-bottom: 4px; direction:=
+ ltr; text-align: left;">&nbsp;</td></tr><tr><td style=3D"color: #000000; f=
+ont-family: 'UberMoveText-Regular','HelveticaNeue',Helvetica,Arial,sans-ser=
+if; font-size: 16px; line-height: 26px; padding-bottom: 7px; padding-top: 7=
+px; direction: ltr; text-align: left;"><p style=3D"margin: 0px;"><span styl=
+e=3D"font-family: Helvetica;">Hi Davi,</span><br /><br />We really enjoyed =
+learning about your background and experiences and are excited to move you =
+forward in the interview process for the Software Engineer II - Frontend ro=
+le.&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;">=
+The next step consists of a <strong>60-minutes</strong> interview. Please t=
+ake a moment to share what your availability looks like <strong>from March =
+30th till April 10th</strong> (at least 5 different time blocks split acros=
+s multiple days. For example, <em>March 10th, 2026 between 9am-6pm</em>, <s=
+trong>including your location/time zone</strong>). Please note that we have=
+ interviewers globally, so the more options the better, considering timezon=
+e differences.</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0=
+px;"><em>Availability Example:</em><br /><em>mm/dd from 02:00pm to 04:30pm =
+and from 05:00pm to 06:00pm Brazil time</em><br /><em>mm/dd from 01:00pm on=
+wards Brazil time</em><br /><em>mm/dd from 10:00am to 05:00pm Brazil time</=
+em></p><p style=3D"margin: 0px;"><em>mm/dd from 10am onwards </em></p><p st=
+yle=3D"margin: 0px;"><em>mm/dd all day</em></p><p style=3D"margin: 0px;">&n=
+bsp;</p><p style=3D"margin: 0px;"><br /><strong>At Uber, reliability is cor=
+e to how we work=E2=80=94it=E2=80=99s how we move the world.</strong> To he=
+lp us move quickly, <strong>please "reply all" and&nbsp;share time blocks w=
+here you are fully available.</strong> Our interviewers prepare carefully f=
+or each conversation, so we ask that you select dates you can truly honor. =
+This helps us keep momentum in your process and ensures everyone is set up =
+for a great discussion.</p><p style=3D"margin: 0px;"><br />Once confirmed o=
+n our side, you will receive the detailed interview schedule via email. Ple=
+ase keep an eye on your spam folder as well.</p></td></tr><tr><td style=3D"=
+color: #000000; font-family: Helvetica; font-size: 16px; line-height: 26px;=
+ padding-bottom: 7px; padding-top: 7px; direction: ltr; text-align: left;">=
+<p style=3D"margin: 0px;"><span style=3D"font-family: helvetica;">Thanks,</=
+span><br /><span style=3D"font-family: Helvetica;">Samira&nbsp;</span></p><=
+p style=3D"margin: 0px;">Talent Coordinator</p></td></tr><tr><td style=3D"d=
+irection: ltr; text-align: left; padding-top: 7px; padding-bottom: 7px;"><t=
+able style=3D"border: none; border-collapse: collapse; border-spacing: 0; t=
+able-layout: fixed; width: 100%;" border=3D"0" width=3D"100%" cellspacing=
+=3D"0" cellpadding=3D"0" align=3D"left"><tbody><tr><td lang=3D"x-textcta" s=
+tyle=3D"color: #000000; direction: ltr; font-family: 'UberMoveText-Bold','H=
+elveticaNeueMedium','HelveticaNeue-Medium','Helvetica Neue Medium',Helvetic=
+a,Arial,sans-serif; font-size: 16px; line-height: 22px; padding-bottom: 10p=
+x; text-align: left;"><p style=3D"margin: 0px;"><a href=3D"https://tracking=
+.icims.com/f/a/hW-FW8hoZKUNaDhJ1gDdiA~~/AAIB5hA~/91RkyqjR0G-XzHg6zj2jZv9p5=
+G2n-A7Nxfx9amTpXTEuLRhZ2AduMUpSHBL1qi1lSXxGmkG0QH0PywpG3K1NjbI6z4GgdydShty9=
+IM2rhyHwXrKCx2jcnpb5wTGSyAx6" target=3D"_blank" style=3D"text-decoration: n=
+one; color: #000000;" rel=3D"noopener">Follow us on LinkedIn to learn more =
+about working at Uber.<span style=3D"padding-left: 10px;">=E2=9D=AF</span> =
+</a></p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0in; font-f=
+amily: Questrial; font-size: 10.0pt;"><em><strong><span style=3D"font-size:=
+ 10pt; font-family: Arial,sans-serif; color: #000000;">Uber is committed to=
+ an inclusive work environment and we want to make this a great interview e=
+xperience for you. If you have a disability or special need that requires a=
+ccommodation, please let us know by completing this</span></strong><a href=
+=3D"https://tracking.icims.com/f/a/YY_C9jIz7n-txeKMn1JJsg~~/AAIB5hA~/9X0-N2=
+nGuTWsgRBrzwCH_CYmwdHxQJegoizwShA5B8xObZutu2oN8PbdYBgQTt0WMF0BwUtgi9gvrC1fN=
+sKR-R0uxKPm5-7n5G0hc_Qj2rfEXjbh1MARS2JaSDPapua-" target=3D"_blank" rel=3D"n=
+oopener"> <strong><span style=3D"font-size: 10pt; font-family: Arial,sans-s=
+erif; color: #1155cc;">form</span></strong></a></em><strong><span style=3D"=
+font-size: 10pt; font-family: Arial,sans-serif; color: #000000;">. </span><=
+/strong></p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: 0px;"><=
+span style=3D"font-size: 10pt;"><em>Uber takes your privacy seriously. Plea=
+se note by agreeing to engage with Uber Recruiting, you are consenting on t=
+he collection and use of your candidate information. To learn how we collec=
+t and use your information, and learn about your rights under GDPR, please =
+visit our <span style=3D"color: #0000ff;"><a href=3D"https://tracking.icims=
+.com/f/a/_-2dZfFe91erD84ELBHk_g~~/AAIB5hA~/I15HspkHix2yIxEfxtaxY9tC7nNgL8w=
+lxSGp6V6zBzUb-04CUmjER2HSuR6tIhjNGGnE7L_D6gk3GOYsZ8lC-9BBTtO0lDBxZmhn0dKQqM=
+ENKZyNbKQ0MrRytC34TrekJstguIl8SVhgG8djsilcD73FRaisRWMvVAHPuWz0A7I~" target=
+=3D"_blank" style=3D"color: #0000ff;" rel=3D"noopener">Privacy Statement</a=
+></span>.</em></span></p></td></tr></tbody></table></td></tr></tbody></tabl=
+e></td></tr></tbody></table><p style=3D"margin: 0px;">&nbsp;</p></td></tr><=
+/tbody></table></td></tr></tbody></table><table style=3D"border: 0; border-=
+collapse: collapse; border-spacing: 0; margin: auto; max-width: 700px;" bor=
+der=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td=
+ align=3D"center"><table style=3D"background-color: #fff; border: 0; border=
+-collapse: collapse; border-spacing: 0; margin: auto;" border=3D"0" width=
+=3D"100%" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#ffffff"><tbody><t=
+r><td align=3D"center"><table style=3D"border: 0; border-collapse: collapse=
+; border-spacing: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpad=
+ding=3D"0"><tbody><tr><td style=3D"background-color: #ffffff;" align=3D"cen=
+ter"><table style=3D"border: 0; border-collapse: collapse; border-spacing: =
+0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody>=
+<tr><td><table style=3D"border: 0; border-collapse: collapse; border-spacin=
+g: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbo=
+dy><tr><td><table style=3D"border: 0; border-collapse: collapse; border-spa=
+cing: 0;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><=
+tbody><tr><td><table style=3D"border: none; border-collapse: collapse; bord=
+er-spacing: 0; width: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" =
+cellpadding=3D"0" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"padding: 0px =
+14px 0px 14px; direction: ltr; text-align: left;" align=3D"left">&nbsp;</td=
+></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><=
+/td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tabl=
+e></td></tr></tbody></table><table style=3D"background-color: #000000; bord=
+er: none; border-collapse: collapse; border-spacing: 0; width: 100%;" borde=
+r=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td s=
+tyle=3D"padding: 0px 14px 0px 14px; direction: ltr; text-align: left;" alig=
+n=3D"left"><table style=3D"border: none; border-collapse: collapse; border-=
+spacing: 0; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">=
+<tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"=
+border: none; border-collapse: collapse; border-spacing: 0; max-width: 560p=
+x; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"=
+center"><tbody><tr><td style=3D"font-size: 1px; height: 1px; line-height: 1=
+px; padding-left: 0px!important; padding-right: 0px!important; direction: l=
+tr; text-align: left;">&nbsp;</td></tr><tr><td style=3D"font-size: 1px; hei=
+ght: 1px; line-height: 1px; padding-left: 0px!important; padding-right: 0px=
+!important; padding-top: 30px; direction: ltr; text-align: left;"><table st=
+yle=3D"border: none; border-collapse: collapse; border-spacing: 0; width: 1=
+00%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbod=
+y><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"borde=
+r: none; border-collapse: collapse; border-spacing: 0; max-width: 268px; wi=
+dth: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left"=
+><tbody><tr><td style=3D"padding-bottom: 20px; direction: ltr; text-align: =
+left;"><table style=3D"border: none; border-collapse: collapse; border-spac=
+ing: 0; table-layout: fixed; width: 100%;" border=3D"0" width=3D"100%" cell=
+spacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"color: #ffffff; dis=
+play: inline-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Ligh=
+t','Helvetica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; line=
+-height: 16px; padding-left: 12px; padding-right: 12px; text-align: center;=
+ width: 64px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/GO=
+4DVf7IFEputmcc8hLDCQ~~/AAIB5hA~/jwedYc7CY8T115kT916uaelghfAxDzG_VhQI8tb_1NU=
+-r8SV17JaLUGGVrMQ6EFv24iHoO1gN8-BvYnXo7XX3gBpiMQHKJR36Ylo3ox4KbFZ6ch3ErUEun=
+mjfXq7gDOu7AdOzdyuRPNG6nZacxNQQRPsG2qgtgwAZ3LhkRSB9sLe5KXb51FEUJ92xMNAbLpuI=
+_1qvY3_ZdE3GaQCrvpEJwe6rkAYDQsQz_jWXUppdyxYFgQNolM65q5zJ9u4MjUdXoX8030qWVnq=
+veMWjityQiy3EwFDf5UCTDv9W32B_3w~" target=3D"_blank" style=3D"color: #ffffff=
+; text-decoration: none;" rel=3D"noopener">Get help</a></td><td style=3D"wi=
+dth: 1px; display: inline-block;" align=3D"center" width=3D"1"><img style=
+=3D"clear: both; display: block; height: auto; max-height: 16px; max-width:=
+ 1px; outline: none; text-decoration: none; width: 100%;" src=3D"https://s3=
+.amazonaws.com/uber-static/emails/2018/global/borders/Line.png" width=3D"1=
+" height=3D"" border=3D"0" /></td><td style=3D"color: #ffffff; display: inl=
+ine-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Light','Helve=
+tica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; line-height: =
+16px; padding-left: 12px; padding-right: 12px; text-align: center; width: 6=
+4px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/1XhCT5-gbvw=
+V24yghN7eaA~~/AAIB5hA~/Awdo1KxSpyS2etc7Ynl90b4beZZx0Ez-dahFlhof6xAb_jatlefI=
+S7k-a8N69ilQ6PZGfpNP1WqT42UxqRvPSrfiabGgvPk1mbFQu4TVGAlmxRXhtMhuI4lc9VHzWpC=
+uPtMOBMNHaMXVRPO3A4i732nLndXzw2n1dtJS5dtgWUH4pIq09lLaoBQOOj7MFinnRmyRmtauJz=
+aMLb9MIa_YJskK_6e_J_ThOHo8NidmgdADdfEwvPntkpqHBchvmhszWeQWhtY7Swn_R1bmLyRZl=
+dB7DbLidX1YgFEw0bQgsdPI6LO_EVDN9maVN5DC0Dwy" target=3D"_blank" style=3D"col=
+or: #ffffff; text-decoration: none;" rel=3D"noopener">Privacy</a></td><td s=
+tyle=3D"width: 1px; display: inline-block;" align=3D"center" width=3D"1"><i=
+mg style=3D"clear: both; display: block; height: auto; max-height: 16px; ma=
+x-width: 1px; outline: none; text-decoration: none; width: 100%;" src=3D"ht=
+tps://s3.amazonaws.com/uber-static/emails/2018/global/borders/Line.png" wid=
+th=3D"1" height=3D"" border=3D"0" /></td><td style=3D"color: #ffffff; displ=
+ay: inline-block; font-family: 'UberMoveText-Regular','HelveticaNeue-Light'=
+,'Helvetica Neue Light',Helvetica,Arial,sans-serif; font-size: 10px; line-h=
+eight: 16px; padding-left: 12px; padding-right: 12px; text-align: center; w=
+idth: 63px; direction: ltr;"><a href=3D"https://tracking.icims.com/f/a/7zWT=
+zP6uCD1YelwcSCHV9w~~/AAIB5hA~/pGqek-D4LjDJiF12lvRDQCqKnswCBSDKN-d6R6PExUnHa=
+5VujG2B-dy2ocSqP8ZVnBztDPktQZNI1x-ehcagwRJvu-AxGFwEpAqFOhNXs-gPXU3pwQfMFDn9=
+qw-LV5chn6w0YQ1jrB70aKgVENE9Aa5-qST82Q5yWkhZTZJlNNBAHz3YXQQpmJtJvHbmw3Fp9OY=
+YHYXmzJbnjo1dkJlfCZfS3-OREa-GadrteczlWefXNL1TKgbDrSYMfkkavXP7aJmhGH0zXmku4O=
+tflLnZTvtpeK2RXePTLIWfV0XQs9M~" target=3D"_blank" style=3D"color: #ffffff; =
+text-decoration: none;" rel=3D"noopener">Terms</a></td><td style=3D"width: =
+1px; display: inline-block;" align=3D"center" width=3D"1"><img style=3D"cle=
+ar: both; display: block; height: auto; max-height: 16px; max-width: 1px; o=
+utline: none; text-decoration: none; width: 100%;" src=3D"https://s3.amazon=
+aws.com/uber-static/emails/2018/global/borders/Line.png" width=3D"1" height=
+=3D"" border=3D"0" /></td></tr></tbody></table></td></tr></tbody></table><t=
+able style=3D"border: none; border-collapse: collapse; border-spacing: 0; m=
+ax-width: 268px; width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left"><tbody><tr><td style=3D"padding-bottom: 20px; directi=
+on: ltr; text-align: left;"><table style=3D"border: none; border-collapse: =
+collapse; border-spacing: 0; table-layout: fixed; width: 100%;" border=3D"0=
+" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=
+=3D"color: #ffffff; display: inline-block; font-family: 'UberMoveText-Regul=
+ar','HelveticaNeue-Light','Helvetica Neue Light',Helvetica,Arial,sans-serif=
+; font-size: 10px; line-height: 16px; padding-left: 12px; padding-right: 12=
+px; text-align: center; width: 64px; direction: ltr;"><a href=3D"https://tr=
+acking.icims.com/f/a/ZG3OiaKbPqlGCQL9niYJvw~~/AAIB5hA~/pp0Vw8-nV99mz6yI4I8y=
+duXKHOQi7cJ0S-jPZW-ejfkbFuKA857Ske1TJojXBdOQ-XPLSV1g3CKkmoWimP_cSEsRfGYcVKO=
+4aQ2EeoJltYZJW2AmcvhQL2JGUn7lKDh9sBUU0PLes2DeHDArpIrWNSY74FpMXlqrai-NOiH36U=
+QIQGOhPLjka88DkeOmB-ZYT1sGO78dL6YMxLL1K5_ZszteNG0aJ5sJwMUrAzC-nPnx-thjiv_Mk=
+TQJ32zFg_TLABDijpREFjM3WsV-e8Fdi8yY1P26ZoLdKZ8fwMpZQIOGbtx2qa-aAlmnNYb_b8Qv=
+QEHQcM_0ztxFEtRqkHPe_w~~" target=3D"_blank" style=3D"color: #ffffff; text-d=
+ecoration: none;" rel=3D"noopener">Community</a></td></tr></tbody></table><=
+/td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style=
+=3D"font-size: 1px; height: 1px; line-height: 1px; padding-left: 0px!import=
+ant; padding-right: 0px!important; direction: ltr; text-align: left;"><tabl=
+e style=3D"border: none; border-collapse: collapse; border-spacing: 0; widt=
+h: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><=
+tbody><tr><td dir=3D"rtl" style=3D"font-size: 0; text-align: left; directio=
+n: rtl;"><table dir=3D"ltr" style=3D"border: none; border-collapse: collaps=
+e; border-spacing: 0; display: inline-block; max-width: 224px; vertical-ali=
+gn: middle; width: 100%;"><tbody><tr><td style=3D"padding-left: 12px; paddi=
+ng-right: 12px; padding-top: 20px; width: 100%; direction: ltr; text-align:=
+ left;" align=3D"right"><table style=3D"border: none; border-collapse: coll=
+apse; border-spacing: 0; table-layout: fixed; text-align: right; width: 100=
+%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"right"><tbody=
+><tr><td style=3D"direction: ltr; text-align: left;"><table style=3D"border=
+: none; border-collapse: collapse; border-spacing: 0; max-width: 56px; widt=
+h: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left"><=
+tbody><tr><td style=3D"font-size: 1px; height: 1px; line-height: 1px; paddi=
+ng-left: 0px!important; padding-right: 0px!important; direction: ltr; text-=
+align: left;"><table style=3D"border: none; border-collapse: collapse; bord=
+er-spacing: 0; table-layout: fixed; width: 100%;" border=3D"0" width=3D"100=
+%" cellspacing=3D"0" cellpadding=3D"0" align=3D"left"><tbody><tr><td style=
+=3D"font-size: 1px; line-height: 1px; direction: ltr; text-align: left;">&n=
+bsp;</td></tr></tbody></table></td></tr></tbody></table><table style=3D"bor=
+der: none; border-collapse: collapse; border-spacing: 0; max-width: 112px; =
+width: 100%;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"lef=
+t"><tbody><tr><td style=3D"direction: ltr; text-align: left;"><table style=
+=3D"border: none; border-collapse: collapse; border-spacing: 0; table-layou=
+t: fixed; width: 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"left"><tbody><tr><td style=3D"direction: ltr; text-al=
+ign: left;" align=3D"right"><a href=3D"https://tracking.icims.com/f/a/3ZwpR=
+PTCvhFh0CgeVYJnoA~~/AAIB5hA~/WyPpy8RYc2D6y7GkmT8HoHhWp6TkIlakidurGq3CMcpcQm=
+Obe_isGso_m4Z4m8EmNQgRhctDtVo8Yaxw8BRUBf-Qd_DNhDTMJS4z0_kKb2OQqBZqApln3Q1I-=
+x09idSao7J-SmSmvpVZHlvcZ1i_2krfapMrsb6juTSmTQD1f9AX0MCnGNojGlABQ4UPnSne_EfY=
+LoMfhBF63qpmAKno_Nb17Xnu_jfVJ6ieueeIdAif9E1i6K6gCNTzO-FMtkwn5JEuJn-6fUom8R8=
+K6x3zFuJ9wW8PBYFNIfOS79h5znM~" target=3D"_blank" rel=3D"noopener"> <img sty=
+le=3D"clear: both; display: block; height: auto; max-height: 17px; max-widt=
+h: 13px; outline: none; text-decoration: none; width: 100%;" src=3D"https:/=
+/s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_18facebook.png=
+" width=3D"13" height=3D"" border=3D"0" /> </a></td><td style=3D"direction:=
+ ltr; text-align: left;" align=3D"right"><a href=3D"https://tracking.icims.=
+com/f/a/2tO5GYQdeWHcxBYwaP8iWA~~/AAIB5hA~/jwedYc7CY8T115kT916uaelghfAxDzG_V=
+hQI8tb_1NX07uNjYZ_APTQZEK2-nuw5E1qJaSmL0n3XB1XV0slpSZLw3vThvckQUfs0w7Ro8IVq=
+MrpZzCuQU3kxZbOivo8UZHwDaJqsGHmEmdRYE13bQST9D_1ZX31Um5O1Nn5NAdkT2hp1TvZJIpY=
+cgBgnRzrVEew23DmegAzPZBii6yXGw3ZlhSi8H32wQgz6C18IVa62qD-TUqIY-lIWS3mATfbPp2=
+SltQFJKglPX1kSuwgTJHBUTFz16wIwL_TX30N9XJ8~" target=3D"_blank" rel=3D"noopen=
+er"> <img style=3D"clear: both; display: block; height: auto; max-height: 1=
+7px; max-width: 19px; outline: none; text-decoration: none; width: 100%;" s=
+rc=3D"https://s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_1=
+8twitter.png" width=3D"19" height=3D"" border=3D"0" /> </a></td><td style=
+=3D"direction: ltr; text-align: left;" align=3D"right"><a href=3D"https://t=
+racking.icims.com/f/a/lLO-4WFvhW72Be4WJaCIXw~~/AAIB5hA~/Z7C--D4Eg_hCflzjlPQ=
+In3GTnn1_tMmXv1T1MgPLt-7yMbBTBsXu2VZ2cLz13I9r96yO8NAyF5pt_W9uTlukUJB7jIOBnO=
+iBLpb7KiKIsehbtngML9jgVnLfW7_Dstv7aXRAIpjS2ii8PN3To7PyCI7ml5DusGJL4JnE4Uw8-=
+Py-ayQMd2AiILnCXWxPoIHOHwAId-bQl9U9ik2-JE95WCP6oZcthbzvyUu9DWdyq6jITN7gX6PT=
+i8f4OlD82v2UCDAr-Q3SL6dcbLrn0xkgZeuQ66IhMGI4CXDcfW86kyI~" target=3D"_blank"=
+ rel=3D"noopener"> <img style=3D"clear: both; display: block; height: auto;=
+ max-height: 17px; max-width: 16px; outline: none; text-decoration: none; w=
+idth: 100%;" src=3D"https://s3.amazonaws.com/uber-static/emails/2018/global=
+/icons/08_28_18instagram.png" width=3D"16" height=3D"" border=3D"0" /> </a>=
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr></tbody></table><table dir=3D"ltr" style=3D"border: none; bord=
+er-collapse: collapse; border-spacing: 0; display: inline-block; max-width:=
+ 336px; vertical-align: top; width: 100%;"><tbody><tr><td style=3D"padding-=
+left: 12px; padding-right: 12px; text-align: left; direction: ltr;"><table =
+style=3D"border: none; border-collapse: collapse; border-spacing: 0; width:=
+ 100%;" border=3D"0" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"><tb=
+ody><tr><td style=3D"color: #e5e5e5; font-family: 'UberMoveText-Regular','H=
+elveticaNeue-Light','Helvetica Neue Light',Helvetica,Arial,sans-serif; font=
+-size: 10px; line-height: 16px; padding-bottom: 20px; padding-top: 10px; di=
+rection: ltr; text-align: left;">Uber Technologies <br />1455 Market St., S=
+an Francisco, CA 94103 <br /><a href=3D"https://tracking.icims.com/f/a/SObG=
+_CI9vL6IpM-3hpziiQ~~/AAIB5hA~/qs3d_chbLH5VrQ9dnXfUv7r8oRNA44n82fGrloMC-poDc=
+nASpbIyC9zXsLPELctSqNpW5moO3EHcsJsDA9rQRrEwK4Kdf3i8u0oo_vU5xkoaI24Z-Gd-9R8e=
+B96fdnjsz055_7Kv699P1VmuqDpi4NPQ4mxnV5dg5DJV8cSgMSWFQOH6dVW0wZN_BBqCCKYuOjI=
+xYecb4VVup6-Pt_IcQH37EgnNQnml2qLum2P1XL-eU9Y4zV24F5_70c7L0BAFdKFWV-lj822OUJ=
+XEnwtu7w~~" target=3D"_blank" style=3D"text-decoration: none; color: #e5e5e=
+5;" rel=3D"noopener">Uber.com</a></td></tr></tbody></table></td></tr></tbod=
+y></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></t=
+body></table></td></tr></tbody></table></td></tr></tbody></table></td></tr>=
+</tbody></table><img src=3D"https://click.uber.com/q/dvdNMXL9rjTzEFR9LG-TOg=
+~~/AAAAAQA~/RgRdgsMfPlcEdWJlckIKAACfj6FbhGdkulINd2lzZUB1YmVyLmNvbVgEAAAAAA~=
+~" alt=3D"" width=3D"1" height=3D"1" border=3D"0" /></div><p style=3D"margi=
+n: 0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p><p style=3D"margin: =
+0px;">&nbsp;</p><p style=3D"margin: 0px;">&nbsp;</p>=0D=0A<img border=3D"0"=
+ width=3D"1" height=3D"1" alt=3D"" src=3D"https://tracking.icims.com/q/HIlW=
+kKsdQ85C5EUzFDb3OQ~~/AAIB5hA~/Ei-ogunQPHCeMxLW8hzkd9LRPDSj99WDB8DC44HYoRbgY=
+M5zsv1iAS1o8mmce8ghTKNZZIbn0aZc7wlX4wAWgQ~~">=0D=0A=0D=0A
+------=_Part_58933_1244901911.1773176680218--
