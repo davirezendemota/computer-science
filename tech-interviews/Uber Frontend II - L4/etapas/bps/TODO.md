@@ -1,0 +1,10 @@
+- [x] Two sum 
+	- heron mencionou ser clássico
+- [ ] Desafio da mock interview 1
+	- https://www.youtube.com/watch?v=YBKfvoUu5LY&t=305s
+- [ ] Desafio da mock interview 2
+	- https://youtu.be/uTnJoAIZoF0?si=PNkPY8fIX_HFuJAV&t=1017
+- [ ] Exercícios com graphos
+- [ ] DFS
+- [ ] Leetcode com hashmap
+- [ ] 
