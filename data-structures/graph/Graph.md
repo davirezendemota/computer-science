@@ -57,5 +57,19 @@ Author: Fireship
 Thumbnail: https://i.ytimg.com/vi/cWNEl4HE2OE/mqdefault.jpg
 AuthorUrl: https://www.youtube.com/@Fireship
 ```
+```vid
+https://www.youtube.com/watch?v=bLtm94mvfjE
+Title: JavaScript Data Structures - 40 - Graph Overview
+Author: Codevolution
+Thumbnail: https://i.ytimg.com/vi/bLtm94mvfjE/mqdefault.jpg
+AuthorUrl: https://www.youtube.com/@Codevolution
+```
+```vid
+https://www.youtube.com/watch?v=tWVWeAqZ0WU
+Title: Graph Algorithms for Technical Interviews - Full Course
+Author: freeCodeCamp.org
+Thumbnail: https://i.ytimg.com/vi/tWVWeAqZ0WU/mqdefault.jpg
+AuthorUrl: https://www.youtube.com/@freecodecamp
+```
 
 ## Handwritten
